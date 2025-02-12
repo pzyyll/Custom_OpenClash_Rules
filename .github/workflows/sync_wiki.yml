@@ -1,0 +1,34 @@
+name: Sync Wiki
+
+on:
+  schedule:
+    # 每天 UTC 时间 0 点运行（北京时间 8 点）
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  sync-wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout current wiki
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}.wiki
+          token: ${{ secrets.SYNC_WIKI }}
+          path: wiki
+
+      - name: Pull upstream wiki changes
+        run: |
+          cd wiki
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git remote add upstream https://github.com/Aethersailor/Custom_OpenClash_Rules.wiki.git
+          git pull upstream master --allow-unrelated-histories
+
+      - name: Push changes
+        run: |
+          cd wiki
+          git push origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.SYNC_WIKI }}
