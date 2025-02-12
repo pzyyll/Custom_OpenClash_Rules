@@ -17,16 +17,17 @@ jobs:
         uses: actions/checkout@v3
 
       # Step 2: 克隆目标仓库
-      - name: Clone Target Repo
-        run: |
-          git clone https://github.com/Aethersailor/Custom_Clash_Rules.git target-repo
-          cd target-repo
-          git config user.name "github-actions"
-          git config user.email "github-actions@users.noreply.github.com"
+      - name: Checkout Target Repo
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.SYNC_TOKEN }}
+          path: target-repo
 
       # Step 3: 修改文件
       - name: Modify File
         run: |
+          set -e
           # 复制文件到目标仓库
           cp cfg/Custom_Clash.ini target-repo/cfg/Custom_Clash_Full.ini
           
@@ -40,8 +41,7 @@ jobs:
           sed -i '1i ;Custom_Clash_Rules\n;全分组防 DNS 泄漏订阅转换模板\n;作者：https://github.com/Aethersailor\n;项目地址：https://github.com/Aethersailor/Custom_Clash_Rules\n;该订阅模板为 Custom_OpenClash_Rules 项目的衍生项目\n;基于 ACL4SSR 模板魔改而来，感谢原作者！\n\n' cfg/Custom_Clash_Full.ini
           
           # 删除包含 "GEOSITE,cn" 和 "GEOIP,cn" 字样的行
-          sed -i '/GEOSITE,cn/d' cfg/Custom_Clash_Full.ini
-          sed -i '/GEOIP,cn/d' cfg/Custom_Clash_Full.ini
+          sed -i '/GEOSITE,cn/d; /GEOIP,cn/d' cfg/Custom_Clash_Full.ini
           
           # 在包含 "Custom_Proxy" 的行后添加两行内容
           sed -i '/Custom_Proxy/a ruleset=🎯 全球直连,[]GEOSITE,cn\nruleset=🎯 全球直连,[]GEOIP,cn,no-resolve' cfg/Custom_Clash_Full.ini
@@ -50,8 +50,8 @@ jobs:
       - name: Commit and Push Changes
         run: |
           cd target-repo
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           git add .
           git commit -m "Update Custom_Clash_Full.ini based on Custom_Clash.ini"
-          git push https://$TARGET_REPO_TOKEN@github.com/Aethersailor/Custom_Clash_Rules.git main
-        env:
-          TARGET_REPO_TOKEN: ${{ secrets.TARGET_REPO_TOKEN }}
+          git push https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/${{ github.repository }} main

@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Checkout current wiki
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           repository: ${{ github.repository }}.wiki
-          token: ${{ secrets.SYNC_WIKI }}
+          token: ${{ secrets.SYNC_TOKEN }}
           path: wiki
 
       - name: Pull upstream wiki changes
@@ -31,4 +31,4 @@ jobs:
           cd wiki
           git push origin master
         env:
-          GITHUB_TOKEN: ${{ secrets.SYNC_WIKI }}
+          GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
