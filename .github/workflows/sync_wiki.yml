@@ -30,6 +30,6 @@ jobs:
       - name: Push changes
         run: |
           cd wiki
-          git push origin master
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
