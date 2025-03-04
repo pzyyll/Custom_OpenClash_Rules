@@ -39,9 +39,13 @@ OpenClash 无疑是 OpenWrt 中最强大的科学上网软件，它可以实现�
 
 ***
 
-本项目编写于2024年4月，为非盈利项目。转载本项目内容请注明本项目的仓库地址，感谢合作！  
+* 本项目编写于2024年4月，为非盈利项目。转载本项目内容请注明本项目的仓库地址，感谢合作！  
 
-本项目没有任何 YouTube 频道，也未在 YouTube 上传任何“教学视频”。  
+* **本项目没有任何 YouTube 频道，也未在 YouTube 上传任何“教学视频”。**  
+
+* **本项目没有“借鉴”任何其他的教程或视频，如果你使用他人提供的教程或模板出现问题，请勿在本项目的 issue 或 TG 群组中提问，感谢配合。**  
+
+***
 
 # 特别声明  
 1. 本项目的主要目的是探索与学习 OpenWrt 系统插件 OpenClash，因此无法确保所有内容的合法性、完整性、准确性或有效性。
@@ -54,7 +58,9 @@ OpenClash 无疑是 OpenWrt 中最强大的科学上网软件，它可以实现�
 
 5. 本项目允许对项目内容进行任何形式的转载和二次创作，包括但不限于文章、视频等形式，转载时务必注明本项目的地址，但不得将相关内容转载于中华人民共和国境内的任何互联网平台之上。
 
-6. 本项目保留随时补充或修改免责声明的权利，凡使用本项目内容的个人或组织，均视为已接受此声明。  
+6. 本项目保留随时补充或修改免责声明的权利，凡使用本项目内容的个人或组织，均视为已接受此声明。
+
+***
 
 # 本项目设置方案及订阅转换模板介绍 
 
@@ -84,7 +90,9 @@ OpenClash 无疑是 OpenWrt 中最强大的科学上网软件，它可以实现�
 
 * **更多的节点区域分组。**  增加包括英国、加拿大等国家的节点分组，参考本项目推荐机场的节点地区设定。
 
-* **自由添加冷门域名规则。**  增加了一些小众网站的直连规则，可以自行用自定义规则补充，亦可 PR 提交域名参与完善规则。  
+* **国内冷门域名处理机制。**  增加了一些小众网站的直连规则，可以自行用自定义规则补充自己需要直连的国内冷门域名，亦可 PR 提交域名参与完善规则。同时，维护者会根据反馈定期收集国内冷门域名提交至 GeoSite 的上游，以便在 OpenClash 中实现绕过内核。  
+
+***
 
 # 使用方法  
 
@@ -102,6 +110,8 @@ OpenClash 无疑是 OpenWrt 中最强大的科学上网软件，它可以实现�
 
 设置方案文字较多，务必逐字逐句认真阅读，不要忽略以防漏掉关键部分导致故障。且方案内含多处设置的讲解便于理解相关设置原理，有助于小白学习。  
 
+***
+
 # 一些说明  
 
 ## 关于个性化需求  
@@ -114,7 +124,9 @@ OpenClash 无疑是 OpenWrt 中最强大的科学上网软件，它可以实现�
 
 若需要添加少量需要直连的国内冷门域名，建议使用 OpenClash 的自定义规则功能，插入相关的规则条目。  
 
-如果希望本项目收录你认为需要直连的国内冷门域名，请参考 Wiki 对应章节：[关于国内冷门域名的收录](https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E#%E5%85%B3%E4%BA%8E%E5%86%B7%E9%97%A8%E5%9B%BD%E5%86%85%E5%9F%9F%E5%90%8D%E7%9A%84%E6%94%B6%E5%BD%95)
+另外，**本项目可能是同类项目中唯一一个会定期向 GeoSite 提交直连域名的项目。**
+
+如果希望本项目或者 GeoSite 数据库永久收录你认为需要直连的国内冷门域名，请按照如下内容进行操作：[关于国内冷门域名的收录](https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/%E5%85%B6%E4%BB%96%E8%AF%B4%E6%98%8E#%E5%85%B3%E4%BA%8E%E5%86%B7%E9%97%A8%E5%9B%BD%E5%86%85%E5%9F%9F%E5%90%8D%E7%9A%84%E6%94%B6%E5%BD%95)  
 
 ## 关于广告过滤  
 
@@ -158,6 +170,8 @@ https://api.asailor.org/sub
 
 测试状态，尚不完善  
 
+***
+
 # 机场推荐 
 
 ## SSRDOG  
@@ -189,7 +203,7 @@ https://api.asailor.org/sub
 
 - 工单支持简体中文沟通且客服反应迅速
 
-注册链接：[SSRDOG 注册](https://dog1.ssrdog10.com/#/register?code=FnSb4oWM)  (链接包含 aff 信息，感谢支持！)
+注册链接：[SSRDOG 注册](https://st1.hosbb.com/#/register?code=FnSb4oWM)  (链接包含 aff 信息，感谢支持！)
 
 本项目订阅模板的节点地区分类即参考了该机场的节点地区进行分类。  
 
@@ -202,16 +216,19 @@ Traffic、GB、Expire
 
 不屏蔽不影响使用，只是会让节点列表看着更整洁一些  
 
-# 控制面板效果截图  
-
-历史截图，可能和当前版本不一致，仅供示意  
-
-![](https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/doc/openclash/pics/db2.png)  
+# 其他推荐项目  
+本项目维护者在使用的一些值得推荐的其他项目。  
+## Clash Dash 
+Clash Dash 是一款在 iOS 下使用原生 SwiftUI 开发的 OpenClash/MihomoTProxy 管理工具。  
+点击直达：[Clash-Dash](https://github.com/bin64/Clash-Dash)  
+非常漂亮的APP，可以说是 iOS 下最方便最优雅的 Clash 管理方式。
 
 # 贡献者  
 <a href="https://github.com/Aethersailor/Custom_OpenClash_Rules/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Aethersailor/Custom_OpenClash_Rules" />
 </a>  
+
+***
 
 # 感谢  
 
@@ -249,12 +266,14 @@ Traffic、GB、Expire
 
 - [ChatGPT / OpenAI](https://chatgpt.com/)
 
-
+***
 
 # 许可		
 [![](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)
 * CC-BY-SA-4.0  
 * 强烈鄙视所有不遵循 LICENSE 的行为。  
+
+***
 
 # 星标记录
 
@@ -265,6 +284,8 @@ Traffic、GB、Expire
    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Aethersailor/Custom_OpenClash_Rules&type=Date" />
  </picture>
 </a>
+
+***
 
 # 访问记录
 
