@@ -23,7 +23,3 @@ DOMAIN-SUFFIX,mtalk.google.com
 # EA Desktop 云同步
 DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
 
-# Other
-DOMAIN-KEYWORD,18comic
-DOMAIN-KEYWORD,jav
-DOMAIN-KEYWORD,docker
