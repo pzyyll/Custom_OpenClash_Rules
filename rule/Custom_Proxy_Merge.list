@@ -1,0 +1,7 @@
+# 强制代理列表，收集
+
+# Other
+DOMAIN-KEYWORD,18comic
+DOMAIN-KEYWORD,jav
+DOMAIN-KEYWORD,docker
+DOMAIN-SUFFIX,jsdelivr.net
