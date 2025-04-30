@@ -10,7 +10,8 @@ DOMAIN-SUFFIX,clientservices.googleapis.com
 DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
 DOMAIN-SUFFIX,dmhy.org
 DOMAIN-SUFFIX,googleapis.cn
-DOMAIN-SUFFIX,jsdelivr.netDOMAIN-SUFFIX,mtalk.google.com
+DOMAIN-SUFFIX,jsdelivr.net
+DOMAIN-SUFFIX,mtalk.google.com
 DOMAIN-SUFFIX,platformio.org
 DOMAIN-SUFFIX,services.googleapis.cn
 DOMAIN-SUFFIX,stun.playstation.net
