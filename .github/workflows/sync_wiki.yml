@@ -25,7 +25,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config pull.rebase false
           git remote add upstream https://github.com/Aethersailor/Custom_OpenClash_Rules.wiki.git
-          git pull upstream master --allow-unrelated-histories
+          git pull upstream master -X theirs --allow-unrelated-histories
 
       - name: Push changes
         run: |
