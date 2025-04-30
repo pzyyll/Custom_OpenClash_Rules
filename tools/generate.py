@@ -30,7 +30,7 @@ def read_rule_file(file_path):
     """读取规则文件，跳过注释和空行"""
     with open(file_path, "r", encoding="utf-8") as f:
         return [
-            line
+            line if line.endswith("\n") else line + "\n"
             for line in f.readlines()
             if line and not line.lstrip().startswith("#")
         ]
@@ -138,7 +138,9 @@ def main():
         string_buffer.close()
         # replace string
         content = content.replace("Aethersailor", "pzyyll")
-        content = content.replace("Custom_Direct.list", "Custom_Direct_Full.list")
+        content = content.replace(
+            "Custom_Direct.list", "Custom_Direct_Full.list"
+        )
         content = content.replace("Custom_Proxy.list", "Custom_Proxy_Full.list")
 
         f.writelines(content)
