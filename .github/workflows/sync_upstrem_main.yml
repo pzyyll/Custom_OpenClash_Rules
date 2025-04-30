@@ -1,0 +1,82 @@
+name: Sync Fork with Upstream Main (-X theirs)
+
+on:
+  schedule:
+    # Runs 'at minute 0 past every 6th hour' - Adjust as needed (e.g., '0 3 * * *' for daily at 3 AM UTC)
+    # See https://crontab.guru/ for cron syntax help
+    - cron: '0 3 * * *' 
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    # Grant permissions for the GITHUB_TOKEN to push to the repository
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Fork Repo
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history so we can merge successfully
+          fetch-depth: 0 
+          # Use the default GITHUB_TOKEN for checkout initially
+          # We'll handle push authentication separately if needed, 
+          # but the permissions block should allow GITHUB_TOKEN for push.
+
+      - name: Set up Upstream Remote
+        # Replace <URL_OF_UPSTREAM_REPO> with the actual HTTPS URL of the original repo
+        run: git remote add upstream https://github.com/Aethersailor/Custom_OpenClash_Rules.git || echo "Upstream remote already exists"
+
+      - name: Configure Git User
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
+      - name: Fetch Upstream Data
+        run: |
+          git fetch upstream --tags --prune --prune-tags
+          git fetch upstream main
+
+      - name: Check if Already Up-to-Date
+        id: check_changes
+        run: |
+          # Get the commit hash of the local main HEAD
+          LOCAL=$(git rev-parse HEAD) 
+          # Get the commit hash of the fetched upstream/main
+          REMOTE=$(git rev-parse upstream/main) 
+
+          echo "Local HEAD: $LOCAL"
+          echo "Upstream main: $REMOTE"
+
+          if [ "$LOCAL" = "$REMOTE" ]; then
+            echo "Fork's main branch is already up-to-date with upstream/main."
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "Fork's main branch is behind upstream/main. Proceeding with merge."
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Merge Upstream Main with -X theirs strategy
+        # Only run merge if changes were detected
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          echo "Attempting merge with -X theirs strategy..."
+          # Using --no-edit to avoid prompts for merge commit messages
+          # Using --allow-unrelated-histories just in case, though often not needed after initial sync
+          git merge upstream/main -X theirs --allow-unrelated-histories --no-edit
+          echo "Merge completed. Conflicts (if any) resolved favoring upstream."
+
+      - name: Push Changes to Fork's Main Branch
+        # Only push if changes were merged
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          echo "Pushing changes to origin main..."
+          # Use the default GITHUB_TOKEN (via permissions) to push
+          git push origin HEAD:main
+          echo "Push successful."
+
+      - name: Report No Changes Made
+        if: steps.check_changes.outputs.changed == 'false'
+        run: echo "No changes needed to be merged or pushed."
+
