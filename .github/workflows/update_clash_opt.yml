@@ -38,5 +38,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Update Custom_Clash_Opt.ini based on Custom_Clash_Mainland.ini and rules"
-          git push origin HEAD
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update Custom_Clash_Opt.ini based on Custom_Clash_Mainland.ini and rules"
+            git push origin HEAD
+          fi
