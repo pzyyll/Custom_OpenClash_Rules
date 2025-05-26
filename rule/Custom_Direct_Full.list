@@ -6,7 +6,6 @@ DOMAIN-KEYWORD,quickconnect
 DOMAIN-KEYWORD,synology
 DOMAIN-SUFFIX,112114.xyz
 DOMAIN-SUFFIX,1996999.xyz
-DOMAIN-SUFFIX,5ddd.com
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,api.myip.com
 DOMAIN-SUFFIX,bangumi.tv
@@ -53,12 +52,15 @@ DOMAIN-SUFFIX,immortalwrt.org
 DOMAIN-SUFFIX,ip6.seeip.org
 DOMAIN-SUFFIX,ipapi.co
 DOMAIN-SUFFIX,ipinfo.io
+DOMAIN-SUFFIX,kaspersky-labs.com
+DOMAIN-SUFFIX,kaspersky.com
 DOMAIN-SUFFIX,kgithub.com
 DOMAIN-SUFFIX,kit327.com
 DOMAIN-SUFFIX,kyarucloud.moe
 DOMAIN-SUFFIX,linux.do
 DOMAIN-SUFFIX,llmtech.de
 DOMAIN-SUFFIX,members.3322.org
+DOMAIN-SUFFIX,moyubuluo.com
 DOMAIN-SUFFIX,msftconnecttest.com
 DOMAIN-SUFFIX,msftncsi.com
 DOMAIN-SUFFIX,nn.ci
