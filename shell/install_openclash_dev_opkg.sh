@@ -2,7 +2,7 @@
 
 # 定义变量
 REPO_API_URL="https://api.github.com/repos/vernesong/OpenClash/contents/dev?ref=package"
-RAW_FILE_PREFIX="https://gh-proxy.com/https://gh-proxy.com/https://raw.githubusercontent.com/vernesong/OpenClash/package/dev"
+RAW_FILE_PREFIX="https://gh-proxy.com/https://raw.githubusercontent.com/vernesong/OpenClash/package/dev"
 TEMP_FILE="openclash.ipk"
 
 # 获取 JSON 数据并解析 .ipk 文件名
@@ -122,4 +122,4 @@ echo "订阅更新完成！"
 
 sleep 3
 echo "启动 OpenClash ..."
-/etc/init.d/openclash restart
+/etc/init.d/openclash restart >/dev/null 2>&1

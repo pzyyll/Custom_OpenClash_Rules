@@ -34,7 +34,7 @@ fi
 
 # 安装 .apk 文件
 echo "正在安装 $APK_FILE..."
-apk add $TEMP_FILE --allow-untrusted
+apk add -q --force-overwrite --clean-protected --allow-untrusted $TEMP_FILE
 if [ $? -ne 0 ]; then
   echo "OpenClash Dev 安装失败，请检查系统环境。"
   rm -f $TEMP_FILE
@@ -121,4 +121,4 @@ echo "订阅更新完成！"
 
 sleep 3
 echo "启动 OpenClash ..."
-/etc/init.d/openclash restart
+/etc/init.d/openclash restart >/dev/null 2>&1
