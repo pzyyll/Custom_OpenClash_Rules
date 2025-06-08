@@ -8,6 +8,7 @@ DOMAIN-SUFFIX,112114.xyz
 DOMAIN-SUFFIX,1996999.xyz
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,api.myip.com
+DOMAIN-SUFFIX,astral-vector.com
 DOMAIN-SUFFIX,bangumi.tv
 DOMAIN-SUFFIX,bgm.tv
 DOMAIN-SUFFIX,checkip.dyndns.org
@@ -49,6 +50,7 @@ DOMAIN-SUFFIX,hub.rat.dev
 DOMAIN-SUFFIX,hub.xdark.top
 DOMAIN-SUFFIX,ifconfig.co
 DOMAIN-SUFFIX,immortalwrt.org
+DOMAIN-SUFFIX,infini.money
 DOMAIN-SUFFIX,ip6.seeip.org
 DOMAIN-SUFFIX,ipapi.co
 DOMAIN-SUFFIX,ipinfo.io
@@ -72,6 +74,7 @@ DOMAIN-SUFFIX,rewards.bing.com
 DOMAIN-SUFFIX,sgtv.ii00.cc
 DOMAIN-SUFFIX,sptv.ii00.cc
 DOMAIN-SUFFIX,tarzipc.top
+DOMAIN-SUFFIX,ug.link
 DOMAIN-SUFFIX,wwwh.eu.org
 IP-CIDR,108.174.48.100/32,no-resolve
 IP-CIDR,218.78.7.16/32,no-resolve
