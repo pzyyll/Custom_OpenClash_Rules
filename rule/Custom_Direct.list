@@ -122,11 +122,8 @@ DOMAIN-SUFFIX,game.maj-soul.com
 # 以下域名已提交 PR
 
 # PR 至 felixonmars/dnsmasq-china-list
-DOMAIN-SUFFIX,moyubuluo.com
-# 绿联 NAS
-DOMAIN-SUFFIX,ug.link
-# 异象回声
-DOMAIN-SUFFIX,astral-vector.com
+DOMAIN-SUFFIX,guanyierp.com
+DOMAIN-SUFFIX,chememall.com
 
 # PR 至 v2fly/domain-list-community
 
@@ -134,6 +131,9 @@ DOMAIN-SUFFIX,astral-vector.com
 # =======================================
 
 # 以下域名已被 GeoSite 收录，定期删除
+#DOMAIN-SUFFIX,astral-vector.com
+#DOMAIN-SUFFIX,ug.link
+#DOMAIN-SUFFIX,moyubuluo.com
 #DOMAIN-SUFFIX,efzhou.com
 #DOMAIN-SUFFIX,buy0596.com
 #DOMAIN-SUFFIX,fzsybj.com
