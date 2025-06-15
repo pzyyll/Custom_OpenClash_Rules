@@ -9,11 +9,11 @@ DOMAIN-SUFFIX,1996999.xyz
 DOMAIN-SUFFIX,aizerox.com
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,api.myip.com
-DOMAIN-SUFFIX,astral-vector.com
 DOMAIN-SUFFIX,bangumi.tv
 DOMAIN-SUFFIX,bgm.tv
 DOMAIN-SUFFIX,checkip.dyndns.org
 DOMAIN-SUFFIX,checkipv6.dyndns.org
+DOMAIN-SUFFIX,chememall.com
 DOMAIN-SUFFIX,chii.in
 DOMAIN-SUFFIX,cn-music.mefun.vip
 DOMAIN-SUFFIX,ddsrem.com
@@ -45,6 +45,7 @@ DOMAIN-SUFFIX,github.boki.moe
 DOMAIN-SUFFIX,github.moeyy.xyz
 DOMAIN-SUFFIX,github.site
 DOMAIN-SUFFIX,github.store
+DOMAIN-SUFFIX,guanyierp.com
 DOMAIN-SUFFIX,hf-mirror.com
 DOMAIN-SUFFIX,hub.crdz.gq
 DOMAIN-SUFFIX,hub.gitmirror.com
@@ -63,7 +64,6 @@ DOMAIN-SUFFIX,kyarucloud.moe
 DOMAIN-SUFFIX,linux.do
 DOMAIN-SUFFIX,llmtech.de
 DOMAIN-SUFFIX,members.3322.org
-DOMAIN-SUFFIX,moyubuluo.com
 DOMAIN-SUFFIX,msftconnecttest.com
 DOMAIN-SUFFIX,msftncsi.com
 DOMAIN-SUFFIX,nn.ci
@@ -77,7 +77,6 @@ DOMAIN-SUFFIX,rewards.bing.com
 DOMAIN-SUFFIX,sgtv.ii00.cc
 DOMAIN-SUFFIX,sptv.ii00.cc
 DOMAIN-SUFFIX,tarzipc.top
-DOMAIN-SUFFIX,ug.link
 DOMAIN-SUFFIX,wwwh.eu.org
 IP-CIDR,108.174.48.100/32,no-resolve
 IP-CIDR,218.78.7.16/32,no-resolve
