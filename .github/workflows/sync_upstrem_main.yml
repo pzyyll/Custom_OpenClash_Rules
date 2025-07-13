@@ -14,6 +14,7 @@ jobs:
     permissions:
       contents: write
       actions: write
+      workflows: write
 
     steps:
       - name: Checkout Fork Repo
@@ -74,7 +75,7 @@ jobs:
         run: |
           echo "Pushing changes to origin main..."
           # Use the default GITHUB_TOKEN (via permissions) to push
-          git push origin HEAD:main
+          git push origin HEAD
           echo "Push successful."
 
       - name: Report No Changes Made
