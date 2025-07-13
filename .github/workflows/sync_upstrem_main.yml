@@ -4,7 +4,7 @@ on:
   schedule:
     # Runs 'at minute 0 past every 6th hour' - Adjust as needed (e.g., '0 3 * * *' for daily at 3 AM UTC)
     # See https://crontab.guru/ for cron syntax help
-    - cron: '0 3 * * *' 
+    - cron: "0 3 * * *"
   workflow_dispatch: # Allows manual triggering from the Actions tab
 
 jobs:
@@ -13,17 +13,15 @@ jobs:
     # Grant permissions for the GITHUB_TOKEN to push to the repository
     permissions:
       contents: write
-      actions: write
-      workflows: write
 
     steps:
       - name: Checkout Fork Repo
         uses: actions/checkout@v4
         with:
           # Fetch all history so we can merge successfully
-          fetch-depth: 0 
+          fetch-depth: 0
           # Use the default GITHUB_TOKEN for checkout initially
-          # We'll handle push authentication separately if needed, 
+          # We'll handle push authentication separately if needed,
           # but the permissions block should allow GITHUB_TOKEN for push.
 
       - name: Set up Upstream Remote
@@ -81,4 +79,3 @@ jobs:
       - name: Report No Changes Made
         if: steps.check_changes.outputs.changed == 'false'
         run: echo "No changes needed to be merged or pushed."
-
