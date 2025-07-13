@@ -75,8 +75,6 @@ jobs:
           # Use the default GITHUB_TOKEN (via permissions) to push
           git push origin HEAD
           echo "Push successful."
-        env:
-          GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
 
       - name: Report No Changes Made
         if: steps.check_changes.outputs.changed == 'false'
