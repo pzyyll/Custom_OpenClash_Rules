@@ -10,6 +10,7 @@ DOMAIN-SUFFIX,agoto.de
 DOMAIN-SUFFIX,aizerox.com
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,api.myip.com
+DOMAIN-SUFFIX,armvm.com
 DOMAIN-SUFFIX,bangumi.tv
 DOMAIN-SUFFIX,bgm.tv
 DOMAIN-SUFFIX,checkip.dyndns.org
@@ -47,6 +48,12 @@ DOMAIN-SUFFIX,github.moeyy.xyz
 DOMAIN-SUFFIX,github.site
 DOMAIN-SUFFIX,github.store
 DOMAIN-SUFFIX,giveup.top
+DOMAIN-SUFFIX,gsgltz.com
+DOMAIN-SUFFIX,gsjkjt.com
+DOMAIN-SUFFIX,gsnhcg.com
+DOMAIN-SUFFIX,gsstic.com
+DOMAIN-SUFFIX,gxnnjidingkeji.top
+DOMAIN-SUFFIX,hexiny.com
 DOMAIN-SUFFIX,hf-mirror.com
 DOMAIN-SUFFIX,hub.crdz.gq
 DOMAIN-SUFFIX,hub.gitmirror.com
@@ -70,6 +77,14 @@ DOMAIN-SUFFIX,msftncsi.com
 DOMAIN-SUFFIX,nn.ci
 DOMAIN-SUFFIX,oracle.com
 DOMAIN-SUFFIX,oraclecloud.com
+DOMAIN-SUFFIX,plusde1.younoyes.com
+DOMAIN-SUFFIX,plushk1.younoyes.com
+DOMAIN-SUFFIX,plushk2.younoyes.com
+DOMAIN-SUFFIX,plushk3.younoyes.com
+DOMAIN-SUFFIX,plusjp1.younoyes.com
+DOMAIN-SUFFIX,plusus1.younoyes.com
+DOMAIN-SUFFIX,plusus2.younoyes.com
+DOMAIN-SUFFIX,plusus3.younoyes.com
 DOMAIN-SUFFIX,pool.ntp.org
 DOMAIN-SUFFIX,powershellgallery.com
 DOMAIN-SUFFIX,pzyyll.top
@@ -80,8 +95,10 @@ DOMAIN-SUFFIX,seaflysoft.com
 DOMAIN-SUFFIX,seedpace.com
 DOMAIN-SUFFIX,sgtv.ii00.cc
 DOMAIN-SUFFIX,sptv.ii00.cc
+DOMAIN-SUFFIX,sxlljm.com
 DOMAIN-SUFFIX,tarzipc.top
 DOMAIN-SUFFIX,wwwh.eu.org
+DOMAIN-SUFFIX,xiaochuanyun.com
 IP-CIDR,108.174.48.100/32,no-resolve
 IP-CIDR,218.78.7.16/32,no-resolve
 IP-CIDR,5.5.5.5/32,no-resolve
