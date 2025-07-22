@@ -104,6 +104,15 @@ DOMAIN-SUFFIX,chii.in
 DOMAIN-SUFFIX,bangumi.tv
 # 肥羊 All in One
 DOMAIN-SUFFIX,freetv.top
+# Younoplus
+DOMAIN-SUFFIX,plusjp1.younoyes.com
+DOMAIN-SUFFIX,plusde1.younoyes.com
+DOMAIN-SUFFIX,plusus1.younoyes.com
+DOMAIN-SUFFIX,plusus2.younoyes.com
+DOMAIN-SUFFIX,plusus3.younoyes.com
+DOMAIN-SUFFIX,plushk1.younoyes.com
+DOMAIN-SUFFIX,plushk2.younoyes.com
+DOMAIN-SUFFIX,plushk3.younoyes.com
 
 
 # 游戏类规则
@@ -119,6 +128,24 @@ DOMAIN-SUFFIX,game.maj-soul.com
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会删除对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# add by Telegram user: Leo / Date:2025-07-22 11:07:09
+DOMAIN-SUFFIX,hexiny.com
+# 云手机 / add by Telegram user: hanshan / Date:2025-07-22 10:36:21
+DOMAIN-SUFFIX,armvm.com
+# 云手机 / add by Telegram user: hanshan / Date:2025-07-22 10:35:28
+DOMAIN-SUFFIX,xiaochuanyun.com
+# add by Telegram user: Aethersailor / Date:2025-07-22 04:14:28
+DOMAIN-SUFFIX,gxnnjidingkeji.top
+# add by Telegram user: Aethersailor / Date:2025-07-21 22:18:39
+DOMAIN-SUFFIX,gsgltz.com
+# Telegram user：Aethersailor / Date:2025-07-21
+DOMAIN-SUFFIX,gsnhcg.com
+# Telegram user：Aethersailor / Date:2025-07-21
+DOMAIN-SUFFIX,gsjkjt.com
+# Telegram user：Aethersailor / Date:2025-07-21
+DOMAIN-SUFFIX,gsstic.com
+# Telegram user：Aethersailor / Date:2025-07-21
+DOMAIN-SUFFIX,sxlljm.com
 # 希沃学习机
 DOMAIN-SUFFIX,seedpace.com
 DOMAIN-SUFFIX,qiaoxuesi.com
