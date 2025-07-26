@@ -96,45 +96,112 @@ if [ $RET -eq 0 ]; then
   SMART_ENABLE=$(uci get openclash.config.smart_enable 2>/dev/null)
   if [ "$SMART_ENABLE" = "1" ]; then
     echo "检测到 Smart 内核已开启。"
-    echo "正在获取最新 Smart 内核模型文件信息..."
+    echo "正在下载 Smart 内核模型文件..."
 
-    MODEL_URL=""
-    TMP_JSON="/tmp/mihomo_releases.json"
-    wget -q -O "$TMP_JSON" "https://api.github.com/repos/vernesong/mihomo/releases"
+    # 使用固定的 Model-large.bin 下载地址
+    MODEL_URL="https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin"
+    MODEL_PATH="/etc/openclash/Model.bin"
+    MODEL_URL_GHPROXY="https://gh-proxy.com/github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin"
+    MODEL_URL_GHFAST="https://ghfast.top/https://github.com/vernesong/mihomo/releases/download/LightGBM-Model/Model-large.bin"
 
-    model_line=$(grep -n '"name": *"Model-large.bin"' "$TMP_JSON" | head -n1 | cut -d: -f1)
-    if [ -n "$model_line" ]; then
-      MODEL_URL=$(tail -n +"$model_line" "$TMP_JSON" | grep -m1 '"browser_download_url":' | sed 's/.*"browser_download_url": *"//;s/".*//')
+    echo "正在测试加速链接速度..."
+    
+    # 同时测试两个 CDN 速度
+    GHFAST_START=$(date +%s)
+    GHPROXY_START=$(date +%s)
+    
+    # 后台同时运行两个测速
+    wget -q --timeout=5 --spider "$MODEL_URL_GHFAST" 2>&1 &
+    GHFAST_PID=$!
+    wget -q --timeout=5 --spider "$MODEL_URL_GHPROXY" 2>&1 &
+    GHPROXY_PID=$!
+    
+    # 等待5秒或进程结束
+    sleep 5
+    
+    # 检查进程是否还在运行，如果还在运行则强制结束
+    if kill -0 $GHFAST_PID 2>/dev/null; then
+      kill $GHFAST_PID 2>/dev/null
+      GHFAST_RET=1
+    else
+      wait $GHFAST_PID
+      GHFAST_RET=$?
     fi
-
-    # echo "DEBUG: MODEL_URL=$MODEL_URL"
-
-    if [ -n "$MODEL_URL" ]; then
-      MODEL_PATH="/etc/openclash/Model.bin"
-      MODEL_URL_GHPROXY="https://gh-proxy.com/${MODEL_URL#https://}"
-      MODEL_URL_GHFAST="https://ghfast.top/${MODEL_URL}"
-
-      echo "尝试通过 GitHub 反代 CDN（ghfast.top）下载内核模型文件..."
-      wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$MODEL_URL_GHFAST" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$MODEL_URL_GHFAST"
-      if [ $? -eq 0 ]; then
-        echo "Smart 内核模型文件下载成功（ghfast.top）：$MODEL_PATH"
+    
+    if kill -0 $GHPROXY_PID 2>/dev/null; then
+      kill $GHPROXY_PID 2>/dev/null
+      GHPROXY_RET=1
+    else
+      wait $GHPROXY_PID
+      GHPROXY_RET=$?
+    fi
+    
+    # 计算实际耗时
+    GHFAST_END=$(date +%s)
+    GHPROXY_END=$(date +%s)
+    GHFAST_TIME=$((GHFAST_END - GHFAST_START))
+    GHPROXY_TIME=$((GHPROXY_END - GHPROXY_START))
+    
+    # 检查连接结果并设置时间
+    if [ $GHFAST_RET -eq 0 ]; then
+      GHFAST_AVAILABLE=1
+    else
+      GHFAST_TIME=999
+      GHFAST_AVAILABLE=0
+    fi
+    
+    if [ $GHPROXY_RET -eq 0 ]; then
+      GHPROXY_AVAILABLE=1
+    else
+      GHPROXY_TIME=999
+      GHPROXY_AVAILABLE=0
+    fi
+    
+    # 选择最快的链接（排除超时情况）
+    if [ "$GHFAST_TIME" = "999" ] && [ "$GHPROXY_TIME" = "999" ]; then
+      FASTEST_URL="$MODEL_URL_GHFAST"
+      FASTEST_NAME="ghfast.top"
+    elif [ "$GHFAST_TIME" = "999" ]; then
+      FASTEST_URL="$MODEL_URL_GHPROXY"
+      FASTEST_NAME="gh-proxy.com"
+    elif [ "$GHPROXY_TIME" = "999" ]; then
+      FASTEST_URL="$MODEL_URL_GHFAST"
+      FASTEST_NAME="ghfast.top"
+    elif [ "$(echo "$GHFAST_TIME < $GHPROXY_TIME" | bc 2>/dev/null || echo "0")" = "1" ]; then
+      FASTEST_URL="$MODEL_URL_GHFAST"
+      FASTEST_NAME="ghfast.top"
+    else
+      FASTEST_URL="$MODEL_URL_GHPROXY"
+      FASTEST_NAME="gh-proxy.com"
+    fi
+    
+    echo "尝试通过 GitHub 反代 CDN（$FASTEST_NAME）下载内核模型文件..."
+    wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$FASTEST_URL" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$FASTEST_URL"
+    if [ $? -eq 0 ]; then
+      echo "Smart 内核模型文件下载成功（$FASTEST_NAME）：$MODEL_PATH"
+    else
+      echo "$FASTEST_NAME 下载失败，尝试另一个加速链接..."
+      if [ "$FASTEST_NAME" = "ghfast.top" ]; then
+        FALLBACK_URL="$MODEL_URL_GHPROXY"
+        FALLBACK_NAME="gh-proxy.com"
       else
-        echo "尝试通过 GitHub 反代 CDN（gh-proxy.com）下载内核模型文件..."
-        wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$MODEL_URL_GHPROXY" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$MODEL_URL_GHPROXY"
+        FALLBACK_URL="$MODEL_URL_GHFAST"
+        FALLBACK_NAME="ghfast.top"
+      fi
+      
+      echo "尝试通过 GitHub 反代 CDN（$FALLBACK_NAME）下载内核模型文件..."
+      wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$FALLBACK_URL" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$FALLBACK_URL"
+      if [ $? -eq 0 ]; then
+        echo "Smart 内核模型文件下载成功（$FALLBACK_NAME）：$MODEL_PATH"
+      else
+        echo "反代 CDN 均失败，尝试通过 GitHub 直链下载..."
+        wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$MODEL_URL" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$MODEL_URL"
         if [ $? -eq 0 ]; then
-          echo "Smart 内核模型文件下载成功（gh-proxy）：$MODEL_PATH"
+          echo "Smart 内核模型文件下载成功（GitHub 直链）：$MODEL_PATH"
         else
-          echo "反代 CDN 均失败，尝试通过 GitHub 直链下载..."
-          wget --show-progress --progress=bar:force:noscroll -T 30 -O "$MODEL_PATH" "$MODEL_URL" 2>/dev/null || wget -T 30 -O "$MODEL_PATH" "$MODEL_URL"
-          if [ $? -eq 0 ]; then
-            echo "Smart 内核模型文件下载成功（GitHub 直链）：$MODEL_PATH"
-          else
-            echo "所有方式均失败，Smart 内核启动时会自动下载模型文件。"
-          fi
+          echo "所有方式均失败，Smart 内核启动时会自动下载模型文件。"
         fi
       fi
-    else
-      echo "未能获取到 Smart 内核模型文件的下载链接，Smart 内核启动时会自动下载模型文件。"
     fi
   else
     echo "检测到 Smart 内核未启用。"
@@ -144,7 +211,6 @@ echo
 
 # 清理临时文件
 rm -f "$TEMP_FILE"
-[ -f /tmp/mihomo_releases.json ] && rm -f /tmp/mihomo_releases.json
 
 # 加载 OpenClash 预设配置（如果存在）
 echo "--------------------[ 加载个性化预设配置 ]----------------"
