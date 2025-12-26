@@ -3,7 +3,7 @@ name: Update Custom_Clash_Opt.ini
 on:
   push:
     paths:
-      - cfg/Custom_Clash_Mainland.ini
+      - cfg/Custom_Clash_Full.ini
       - rule/Custom_Direct_Merge.list
       - rule/Custom_Proxy_Merge.list
       - rule/Custom_Proxy.list
@@ -41,6 +41,6 @@ jobs:
           if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to commit"
           else
-            git commit -m "Update Custom_Clash_Opt.ini based on Custom_Clash_Mainland.ini and rules"
+            git commit -m "Update Custom_Clash_Opt.ini based on Custom_Clash_Full.ini and rules"
             git push origin HEAD
           fi
