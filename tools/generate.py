@@ -19,7 +19,7 @@ custom_proxy_full_list = os.path.join(
     root_path, "rule", "Custom_Proxy_Full.list"
 )
 
-custom_clash_cfg = os.path.join(root_path, "cfg", "Custom_Clash_Mainland.ini")
+custom_clash_cfg = os.path.join(root_path, "cfg", "Custom_Clash_Full.ini")
 custom_clash_cfg_a1_node = os.path.join(
     root_path, "cfg", "Custom_Clash_A1_Node.ini"
 )
