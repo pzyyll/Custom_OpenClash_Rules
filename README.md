@@ -2,7 +2,7 @@
 
 <p align="center">
 	<img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/Aethersailor/Custom_OpenClash_Rules?style=flat">
-	<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/Aethersailor/Custom_OpenClash_Rules?style=flat">
+	<img alt="GitHub contributors" src="https://img.shields.io/github/contributors-anon/Aethersailor/Custom_OpenClash_Rules?style=flat">
 	<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/t/Aethersailor/Custom_OpenClash_Rules?style=flat">
 	<img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fapi.asailor.org%2Fversion&up_message=online&down_message=offline&style=flat&label=backend">
 	<a href="https://t.me/custom_openclash_rules">
@@ -63,7 +63,7 @@
 * **本项目仅为维护者个人经验的一个总结性示例，不具备权威性，并非 OpenClash 的唯一使用方式。**
 * **本项目没有任何 YouTube 频道，也未在 YouTube 上传任何"教学视频"。**
 * **本项目没有"借鉴"任何其他的教程或视频，如果你使用他人提供的教程或模板出现问题，请勿在本项目的 issue 或 TG 群组中提问，感谢配合。**
-* **本项有部分内容适合新手小白，但不代表维护者对小白有任何帮助义务。**
+* **本项目有部分内容适合新手小白，但不代表维护者对小白有任何帮助义务。**
 
 ---
 
@@ -92,8 +92,6 @@
 > 免去各种 DNS 插件带来的搭配烦恼，全部特性依靠 OpenClash 一个插件实现，且保证 OpenClash 即使挂了也不影响访问国内网站。
 - 🖱️ **傻瓜化的设置操作。**  
 > 全程在 OpenClash 页面上操作，鼠标点击+复制粘贴几分钟即可完成完美设置，无需手搓配置，无需上传文件。
-- 🛤️ **两种使用路径。**  
-> 同时提供手工设置+订阅转换，以及远程覆写+配置文件两种设置方案和对应文件，总有一个适合你。
 - 🗂️ **丰富的分流策略组。**  
 > 多款规则模板，包含流媒体服务、AI 工具、电商、游戏平台等在内的大量常见的分流策略组，同时也为轻量化需求用户提供简化版本的规则。
 - ⚡ **节点地区分类测速优选。**  
@@ -125,7 +123,7 @@
 
 以上方案非常详尽，只需按部就班设置即可。全部设置内容均基于 OpenClash 的 luci 设置页面，有手就行！
 
-实在看不懂教程，可以使用 OpenClash 远程覆写功能进行一键设置。  
+如需使用远程覆写配置文件，推荐使用 [Giveupmoon/OpenClash_Overwrite](https://github.com/Giveupmoon/OpenClash_Overwrite)。
 
 > 📝 **设置方案文字较多，务必逐字逐句认真阅读，不要忽略以防漏掉关键部分导致故障。且方案内含多处设置的讲解便于理解相关设置原理，有助于小白学习。**
 
@@ -155,6 +153,9 @@
 
 ### ~~🚫 关于广告过滤~~
 
+<details>
+<summary>点击查看已废弃的广告过滤说明</summary>
+
 > 2025.7.22：目前发现该功能可能引起 dnsmasq 故障，请暂时停用。
 
 ~~本项目借助 OpenClash 的"开发者选项"功能，实现不依赖第三方插件的广告过滤功能。~~
@@ -165,9 +166,11 @@
 
 ~~其中提供了 Dnsmasq 格式和 hosts 格式的两种设置方法的示例，可以照抄，亦可自由设置其他任何符合格式要求的广告规则。~~
 
+</details>
+
 ---
 
-### 🌐关于 IPv6
+### 🌐 关于 IPv6
 
 通过正确设置 OpenWrt 的 IPv6 功能以及 OpenClash，即可实现 OpenWrt 主路由下的 IPv6 和 OpenClash 的完美兼容。在实现 IPv6 国内外分流代理的同时，还能完美通过 IPv6-Test 的国内和国外镜像站点测试。
 
@@ -195,7 +198,7 @@ https://api.asailor.org/sub
 
 出现故障请参考 [Wiki 中的故障排除部分](https://github.com/Aethersailor/Custom_OpenClash_Rules/wiki/%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4)，内含常见问题的解决方法。
 
-🛠️ 项目维护者可以确定，本项目的设置方案完美无瑕，建议不要从本项目的内容上找原因，以免浪费时间。某些特殊问题如 Google Play 更新问题涉及诸多原因，和模板本身并无关系。
+🛠️ 项目的设置方案经过众多用户验证不存在问题，建议不要从本项目的内容上找原因，以免浪费时间。某些特殊问题如 Google Play 更新问题涉及诸多原因，和模板本身并无关系。
 
 ---
 
@@ -228,13 +231,10 @@ https://api.asailor.org/sub
 - 🔄 部分节点支持 FullCone 全锥形 NAT
 - 🎮 支持 UDP 转发和游戏加速
 - 🆓 支持试用
-- 💬 工单支持简体中文沟通且客服反应迅速
 
 注册链接：[SSRDOG 注册](https://st1.hosbb.com/#/register?code=FnSb4oWM)  (链接包含 aff 代码，感谢支持！介意 aff 可自行去除代码)
 ```
 优惠码：Custom_OpenClash_Rules
-使用范畴：轻度，标准，企业（月，季，半年，1年）
-使用须知：每帐号仅1次使用机会
 ```
 本项目订阅模板的节点地区分类即参考了该机场的节点地区进行分类。
 
@@ -253,7 +253,7 @@ Traffic、GB、Expire
 ## 🤝 贡献者
 
 <a href="https://github.com/Aethersailor/Custom_OpenClash_Rules/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Aethersailor/Custom_OpenClash_Rules" />
+  <img src="https://contrib.rocks/image?repo=Aethersailor/Custom_OpenClash_Rules&anon=1" />
 </a>
 
 ---
@@ -270,9 +270,12 @@ Traffic、GB、Expire
 ### 🧩 内核
 - [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo)
 
-### 🗂 模板
+### 🗂 订阅转换模板
 - [ACL4SSR/ACL4SSR](https://github.com/ACL4SSR/ACL4SSR)
 - [TraderWukong/demo](https://github.com/TraderWukong/demo)
+
+### ⚙️ 远程覆写配置
+- [Giveupmoon/OpenClash_Overwrite](https://github.com/Giveupmoon/OpenClash_Overwrite)
 
 ### 🛣 分流规则
 - [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)
