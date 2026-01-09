@@ -69,6 +69,8 @@
 > - **Telegram Channel**: [Custom_OpenClash_Rules | 通知频道](https://t.me/custom_openclash_rules)
 > - **Telegram Group**: [Custom_OpenClash_Rules | 交流群](https://t.me/custom_openclash_rules_group)
 
+<!-- -->
+
 > [!TIP]
 > **❓ 如遇问题，请先阅读以下内容：**
 >
@@ -189,6 +191,8 @@
 > [!TIP]
 > [Rule-Bot](https://github.com/Aethersailor/Rule-Bot) 是维护者的另一个开源项目，如果你自行维护了规则文件的话，可以使用 Rule-Bot 方便的实现域名的自动化检测和添加。
 
+<!-- -->
+
 > [!NOTE]
 > 维护者会定期将收集到的国内冷门域名向上游规则进行 PR。
 
@@ -225,19 +229,26 @@ OpenWrt 的 IPv6 设置方案见本项目的 Wiki：[OpenWrt-IPv6-设置方案](
 
 ![Website](https://img.shields.io/website?url=https%3A%2F%2Fapi.asailor.org%2Fversion&up_message=%E5%9C%A8%E7%BA%BF&down_message=%E7%A6%BB%E7%BA%BF&style=for-the-badge&label=%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%BD%93%E5%89%8D%E7%8A%B6%E6%80%81)
 
-有许多机场会屏蔽使用后端，如果 OpenClash 自带的订阅转换服务全部不可用，你可以使用本项目提供的订阅转换服务地址：
+有许多机场会屏蔽使用后端，如果 OpenClash 自带的订阅转换服务全部不可用，你可以使用本项目提供的订阅转换服务。
 
-```
+> [!NOTE]
+> OpenClash v0.47.041 及以上版本的`订阅转换服务地址`列表中的 `api.asailor.org` 即为本项目部署的增强型后端服务实例。
+
+如果你的`订阅转换服务地址`下拉列表中没有本项目的后端，说明你当前使用的并非最新版 dev 版本的 OpenClash，你可以手动填写后端地址：
+
+```text
 https://api.asailor.org/sub
 ```
+
 > [!TIP]
 > 填写 `https://api.asailor.org/sub`、`https://api.asailor.org`、`api.asailor.org` 均可正常调用后端。
 
 填写进`配置订阅信息 > 订阅转换服务地址`中即可生效。
 
 > [!IMPORTANT]
-> 本项目后端使用深度二次开发的改进版后端 [Subconverter-Extended](https://github.com/Aethersailor/SubConverter-Extended)。  
-> 后端不连接机场，不去读取节点，解决了传统后端使用时的所有痛点，极大的提高了兼容性。
+> 本项目后端使用深度二次开发的改进型后端 [Subconverter-Extended](https://github.com/Aethersailor/SubConverter-Extended)。  
+> 改进型后端处理远程订阅链接时，不再连接机场，不去读取节点，仅写入配置文件，解决了传统后端会被机场屏蔽或者转换失败的问题。
+> 本后端处理本地节点链接使用内置的 Mihomo 内核解析器模块，实现全协议完美兼容。
 
 ---
 
@@ -292,6 +303,8 @@ https://api.asailor.org/sub
 > [!WARNING]
 > ⚠️ **仅作推荐，维护者和推荐机场无任何关系，不对机场服务质量进行任何担保。**
 
+<!-- -->
+
 > [!TIP]
 > **节点过滤建议：**
 >
@@ -300,6 +313,8 @@ https://api.asailor.org/sub
 > ```text
 > Traffic、GB、Expire、11、12、13、14、15
 > ```
+
+<!-- -->
 
 > 若不使用 IPv6 功能，建议只需屏蔽如下节点关键词：
 >
@@ -314,7 +329,7 @@ https://api.asailor.org/sub
 ## 🤝 贡献者
 
 <a href="https://github.com/Aethersailor/Custom_OpenClash_Rules/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Aethersailor/Custom_OpenClash_Rules&anon=1" />
+  <img src="https://contrib.rocks/image?repo=Aethersailor/Custom_OpenClash_Rules&anon=1" alt="贡献者列表" />
 </a>
 
 ---
@@ -382,9 +397,9 @@ https://api.asailor.org/sub
 
 ## 📝 许可
 
-[![](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)
+[![CC-BY-SA-4.0 许可证](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/deed.zh)
 
-**CC-BY-SA-4.0**
+### CC-BY-SA-4.0
 
 ---
 

@@ -3,8 +3,12 @@ name: Clean Failed/Cancelled Workflow Runs
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   clean-failed-cancelled:
+    if: github.repository == 'Aethersailor/Custom_OpenClash_Rules'
     runs-on: ubuntu-latest
     steps:
       - name: Delete all failed and cancelled workflow runs

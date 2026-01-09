@@ -25,6 +25,7 @@ DOMAIN-SUFFIX,github.moeyy.xyz
 DOMAIN-SUFFIX,github.site
 DOMAIN-SUFFIX,github.store
 DOMAIN-SUFFIX,hub.gitmirror.com
+DOMAIN-SUFFIX,jsdelivr.com
 DOMAIN-SUFFIX,jsdelivr.net
 DOMAIN-SUFFIX,kgithub.com
 # Docker 反代 CDN
@@ -220,6 +221,44 @@ DOMAIN-SUFFIX,bunny.net
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# 软件官网 / add by Telegram user: 哈Lay / Date: 2026-01-07 21:32:03
+DOMAIN-SUFFIX,passnat.com
+# 博客 / add by Telegram user: 哈Lay / Date: 2026-01-07 21:31:37
+DOMAIN-SUFFIX,zmis.me
+# 视频网站 / add by Telegram user: 哈Lay / Date: 2026-01-07 19:18:30
+DOMAIN-SUFFIX,8kc.top
+# add by Telegram user: hlly / Date: 2026-01-06 22:51:31
+DOMAIN-SUFFIX,kcbd.top
+# 视频网站 / add by Telegram user: 哈Lay / Date: 2026-01-06 21:13:37
+DOMAIN-SUFFIX,theluyuan.com
+# 公务行 / add by Telegram user: 哈Lay / Date: 2026-01-06 17:37:14
+DOMAIN-SUFFIX,gpetrip.com
+# 公务网 / add by Telegram user: 哈Lay / Date: 2026-01-06 17:36:23
+DOMAIN-SUFFIX,gpgwx.com
+# add by Telegram user: Aethersailor / Date: 2026-01-05 11:18:51
+DOMAIN-SUFFIX,scnyw.com
+# add by Telegram user: Aethersailor / Date: 2026-01-05 10:59:31
+DOMAIN-SUFFIX,cgicop.com
+# add by Telegram user: IllIllIlIl / Date: 2026-01-05 09:31:45
+DOMAIN-SUFFIX,ts3.ink
+# add by Telegram user: IllIllIlIl / Date: 2026-01-05 08:57:51
+DOMAIN-SUFFIX,xn--cesw6hd3s99f.com
+# add by Telegram user: IllIllIlIl / Date: 2026-01-05 08:54:12
+DOMAIN-SUFFIX,cmbc.run
+# add by Telegram user: 哈Lay / Date: 2026-01-03 21:57:08
+DOMAIN-SUFFIX,xiaoxia.vip
+# 酷咖游戏官网 / add by Telegram user: kisigrant / Date: 2026-01-03 20:40:43
+DOMAIN-SUFFIX,cocav.com
+# 酷友社 / add by Telegram user: zero / Date: 2026-01-03 12:27:09
+DOMAIN-SUFFIX,d4ctech.com
+# 个人网站 / add by Telegram user: Awt / Date: 2026-01-03 00:58:13
+DOMAIN-SUFFIX,awstme.top
+# 北京公交地铁APP："亿通行" / add by Telegram user: zero / Date: 2026-01-02 23:03:30
+DOMAIN-SUFFIX,easytomessage.com
+# add by Telegram user: Aethersailor / Date: 2026-01-02 16:29:48
+DOMAIN-SUFFIX,shanghai-parking.com
+# 影视站 / add by Telegram user: 哈Lay / Date: 2026-01-02 15:26:38
+DOMAIN-SUFFIX,aidien.fun
 # add by Telegram user: kk / Date: 2026-01-02 02:54:35
 DOMAIN-SUFFIX,svyun.com
 # add by Telegram user: h / Date: 2026-01-01 14:23:06
