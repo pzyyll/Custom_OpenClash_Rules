@@ -239,6 +239,16 @@ DOMAIN-SUFFIX,a0d.top
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:42:55
+DOMAIN-SUFFIX,scratch5.com
+# 米思齐官网 / add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:41:54
+DOMAIN-SUFFIX,mixly.org
+# 铁威马NAS远程访问服务 / add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:40:12
+DOMAIN-SUFFIX,tnas.link
+# 铁威马官网 / add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:39:01
+DOMAIN-SUFFIX,terra-master.com
+# 铁威马NAS远程访问服务 / add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:36:32
+DOMAIN-SUFFIX,tnas.online
 
 
 
@@ -252,6 +262,18 @@ DOMAIN-SUFFIX,a0d.top
 # 以下域名已提交 PR
 
 # PR 至 felixonmars/dnsmasq-china-list
+
+
+
+# PR 至 v2fly/domain-list-community
+
+
+
+# ---------------------------------------
+# =======================================
+
+# 以下域名已被 GeoSite 上游项目收录，定期删除
+
 # 软件官网 / add by Telegram user: 哈Lay / Date: 2026-01-07 21:32:03
 DOMAIN-SUFFIX,passnat.com
 # 博客 / add by Telegram user: 哈Lay / Date: 2026-01-07 21:31:37
@@ -324,18 +346,6 @@ DOMAIN-SUFFIX,aaawz.cc
 DOMAIN-SUFFIX,mifon.com
 # 深圳第一健康机构网站 / add by Telegram user: Animi / Date: 2025-12-13 00:42:45
 DOMAIN-SUFFIX,thmnet.com
-
-
-# PR 至 v2fly/domain-list-community
-
-
-
-# ---------------------------------------
-# =======================================
-
-# 以下域名已被 GeoSite 上游项目收录，定期删除
-
-# 以下域名已被收录，计划于 2025.12.5 删除
 # add by Telegram user: Aethersailor / Date: 2025-12-08 14:59:40
 DOMAIN-SUFFIX,zhituwujie.com
 # 百度网盘解析 / add by Telegram user: x / Date: 2025-12-07 18:19:35
