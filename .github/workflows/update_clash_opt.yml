@@ -3,6 +3,7 @@ name: Update Custom_Clash_Opt.ini
 on:
   push:
     paths:
+      - cfg/Custom_Clash_A1_Node.ini
       - cfg/Custom_Clash_Full.ini
       - rule/Custom_Direct_Merge.list
       - rule/Custom_Proxy_Merge.list
