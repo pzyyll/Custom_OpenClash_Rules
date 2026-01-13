@@ -138,9 +138,9 @@ def main():
         string_buffer.close()
         # replace string
         content = content.replace("Aethersailor", "pzyyll")
-        content = content.replace(
-            "Custom_Direct.list", "Custom_Direct_Full.list"
-        )
-        content = content.replace("Custom_Proxy.list", "Custom_Proxy_Full.list")
+        # content = content.replace(
+        #     "Custom_Direct.list", "Custom_Direct_Full.list"
+        # )
+        # content = content.replace("Custom_Proxy.list", "Custom_Proxy_Full.list")
 
         f.writelines(content)
