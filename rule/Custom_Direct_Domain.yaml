@@ -1,10 +1,11 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/pzyyll/Custom_OpenClash_Rules
 # SOURCE: https://github.com/pzyyll/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 445
+# TOTAL: 446
 
 payload:
   - '*m-team*'
+  - '*oracle*'
   - '*quickconnect*'
   - '*synology*'
   - '+.03241119.xyz'
