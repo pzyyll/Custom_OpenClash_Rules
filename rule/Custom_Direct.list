@@ -11,6 +11,8 @@ DOMAIN-SUFFIX,kyarucloud.moe
 # Tailscale
 DOMAIN-SUFFIX,tailscale.com
 SRC-PORT,41641
+# Cloudflare Tunnel
+DOMAIN-SUFFIX,argotunnel.com
 # GitHub 反代 CDN
 DOMAIN-SUFFIX,gh-proxy.com
 DOMAIN-SUFFIX,gh.con.sh
@@ -63,7 +65,6 @@ DOMAIN-SUFFIX,msftncsi.com
 # Kaspersky
 DOMAIN-SUFFIX,kaspersky.com
 DOMAIN-SUFFIX,kaspersky-labs.com
-
 # Akamai CDN
 DOMAIN-SUFFIX,akamaihd.net
 DOMAIN-SUFFIX,akamaized.net
@@ -253,6 +254,12 @@ DOMAIN-SUFFIX,dnshe.com
 DOMAIN-SUFFIX,lg3000.top
 # add by Telegram user: 嘿嘿 / Date: 2026-01-11 20:42:55
 DOMAIN-SUFFIX,scratch5.com
+# 播客 / add by Telegram user: Mairs / Date: 2026-01-22 17:49:33
+DOMAIN-SUFFIX,meiyitou.top
+# add by Telegram user: Mairs / Date: 2026-01-22 17:48:05
+DOMAIN-SUFFIX,misea.top
+# 先锋学霸 / add by Telegram user: Mairs / Date: 2026-01-22 17:46:58
+DOMAIN-SUFFIX,axuex.top
 
 # =======================================
 # 以下是应当直连的冷门国内域名规则
@@ -262,6 +269,65 @@ DOMAIN-SUFFIX,scratch5.com
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+
+
+
+
+# 2026.1.22 分类整理完毕
+
+# ---------------------------------------
+# 以下域名已提交 PR
+
+# PR 至 felixonmars/dnsmasq-china-list
+
+# add by Telegram user: Mairs / Date: 2026-01-22 17:59:20
+DOMAIN-SUFFIX,tcp.mk
+# add by Telegram user: Mairs / Date: 2026-01-22 17:58:29
+DOMAIN-SUFFIX,lucky.gd
+# add by Telegram user: Mairs / Date: 2026-01-22 17:58:00
+DOMAIN-SUFFIX,zhu.today
+# add by Telegram user: Mairs / Date: 2026-01-22 17:57:34
+DOMAIN-SUFFIX,ilucky.net
+# add by Telegram user: Mairs / Date: 2026-01-22 17:56:20
+DOMAIN-SUFFIX,zcloud.world
+# add by Telegram user: Mairs / Date: 2026-01-22 17:56:06
+DOMAIN-SUFFIX,dadateach.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:55:44
+DOMAIN-SUFFIX,xuepaipai.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:54:28
+DOMAIN-SUFFIX,jiaoyanyun.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:54:06
+DOMAIN-SUFFIX,aibeike.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:53:48
+DOMAIN-SUFFIX,dahai96.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:53:25
+DOMAIN-SUFFIX,xesabc.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:53:12
+DOMAIN-SUFFIX,tixue.net
+# 万家乐 / add by Telegram user: Mairs / Date: 2026-01-22 17:52:18
+DOMAIN-SUFFIX,machtalk.net
+# 一财有看投 / add by Telegram user: Mairs / Date: 2026-01-22 17:52:01
+DOMAIN-SUFFIX,yicaiykt.com
+# 冰山数据 / add by Telegram user: Mairs / Date: 2026-01-22 17:51:23
+DOMAIN-SUFFIX,bingshandashu.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:50:54
+DOMAIN-SUFFIX,wologic.net
+# add by Telegram user: Mairs / Date: 2026-01-22 17:50:39
+DOMAIN-SUFFIX,hiwms.com
+# 点可云 / add by Telegram user: Mairs / Date: 2026-01-22 17:50:23
+DOMAIN-SUFFIX,nodcloud.com
+# 北京教委 / add by Telegram user: Mairs / Date: 2026-01-22 17:50:02
+DOMAIN-SUFFIX,bjtzeduyun.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:48:42
+DOMAIN-SUFFIX,enyugame.net
+# add by Telegram user: Mairs / Date: 2026-01-22 17:48:20
+DOMAIN-SUFFIX,kancaibao.com
+# 和风天气 API / add by Telegram user: Mairs / Date: 2026-01-22 17:47:47
+DOMAIN-SUFFIX,qweatherapi.com
+# add by Telegram user: Mairs / Date: 2026-01-22 17:46:08
+DOMAIN-SUFFIX,functorz.com
+# 斑斑低代码 / add by Telegram user: Mairs / Date: 2026-01-22 17:45:45
+DOMAIN-SUFFIX,banban.work
 # add by Telegram user: r / Date: 2026-01-19 16:34:38
 DOMAIN-SUFFIX,us.ci
 # add by Telegram user: r / Date: 2026-01-19 16:33:36
@@ -270,16 +336,6 @@ DOMAIN-SUFFIX,cc.cd
 DOMAIN-SUFFIX,meoof-pet.com
 # 上海车又在信息技术有限公司 / add by Telegram user: Evan / Date: 2026-01-18 14:24:13
 DOMAIN-SUFFIX,cyouzai.com
-
-
-
-# 2026.1.18 分类整理完毕
-
-# ---------------------------------------
-# 以下域名已提交 PR
-
-# PR 至 felixonmars/dnsmasq-china-list
-
 # 星耀充值 / add by Telegram user: r / Date: 2026-01-13 19:50:19
 DOMAIN-SUFFIX,xingyaozhilian.com
 # 小倍养基 / add by Telegram user: Mairs / Date: 2026-01-13 17:11:39
