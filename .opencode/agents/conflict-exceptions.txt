@@ -1,0 +1,7 @@
+# Conflict Exceptions List
+# Files listed here require MANUAL merge (will NOT be auto-resolved with theirs)
+# One file path per line, relative to repository root
+# Lines starting with # are comments
+
+cfg/Custom_Clash_Full.ini
+rule/Custom_Direct.list
