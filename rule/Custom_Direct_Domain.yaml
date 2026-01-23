@@ -1,10 +1,11 @@
 # Generated from rule/Custom_Direct.list
-# REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
-# SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 467
+# REPO: https://github.com/pzyyll/Custom_OpenClash_Rules
+# SOURCE: https://github.com/pzyyll/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
+# TOTAL: 474
 
 payload:
   - '*m-team*'
+  - '*oracle*'
   - '*quickconnect*'
   - '*synology*'
   - '+.03241119.xyz'
@@ -38,11 +39,13 @@ payload:
   - '+.adobe.com'
   - '+.afeica.com'
   - '+.afuns.me'
+  - '+.agoto.de'
   - '+.aibeike.com'
   - '+.aichangbaishan.com'
   - '+.aidien.fun'
   - '+.aigodlike.com'
   - '+.aistudio-app.com'
+  - '+.aizerox.com'
   - '+.akamaihd.net'
   - '+.akamaized.net'
   - '+.aloys233.top'
@@ -225,6 +228,7 @@ payload:
   - '+.ilucky.net'
   - '+.imacos.top'
   - '+.immortalwrt.org'
+  - '+.infini.money'
   - '+.iotrix.net'
   - '+.ip159.com'
   - '+.ip6.seeip.org'
@@ -263,6 +267,7 @@ payload:
   - '+.lg3000.top'
   - '+.liunn.com'
   - '+.liveperson.net'
+  - '+.llmtech.de'
   - '+.longmenshuju.com'
   - '+.lsbj365.com'
   - '+.lucky.gd'
@@ -325,6 +330,7 @@ payload:
   - '+.ptl.gs'
   - '+.ptlgs.org'
   - '+.pwithe.com'
+  - '+.pzyyll.top'
   - '+.qiankunshopping.com'
   - '+.qianuni.com'
   - '+.qianxuecloud.com'
@@ -372,6 +378,7 @@ payload:
   - '+.tailgdd.com'
   - '+.tailscale.com'
   - '+.tangguobaohe.com'
+  - '+.tarzipc.top'
   - '+.tclai.top'
   - '+.tcp.mk'
   - '+.tcp.pub'
