@@ -43,5 +43,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update Custom_Clash_Opt.ini based on Custom_Clash_Full.ini and rules"
+            git pull --rebase origin main
             git push origin HEAD
           fi
