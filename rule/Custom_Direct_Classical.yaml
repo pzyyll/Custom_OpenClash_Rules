@@ -1,18 +1,19 @@
 # Generated from rule/Custom_Direct.list
-# REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
-# SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 488
+# REPO: https://github.com/pzyyll/Custom_OpenClash_Rules
+# SOURCE: https://github.com/pzyyll/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
+# TOTAL: 500
 
 payload:
   - DOMAIN-KEYWORD,m-team
-  - DOMAIN-KEYWORD,oracle
   - DOMAIN-KEYWORD,quickconnect
   - DOMAIN-KEYWORD,synology
+  - DOMAIN-SUFFIX,0044696.com
   - DOMAIN-SUFFIX,03241119.xyz
   - DOMAIN-SUFFIX,112114.xyz
   - DOMAIN-SUFFIX,115cdn.de
   - DOMAIN-SUFFIX,1996999.xyz
   - DOMAIN-SUFFIX,204cloud.com
+  - DOMAIN-SUFFIX,365ting.com
   - DOMAIN-SUFFIX,3d-apollo.com
   - DOMAIN-SUFFIX,3dwhere.com
   - DOMAIN-SUFFIX,3gxk.net
@@ -44,6 +45,7 @@ payload:
   - DOMAIN-SUFFIX,aichangbaishan.com
   - DOMAIN-SUFFIX,aidien.fun
   - DOMAIN-SUFFIX,aigodlike.com
+  - DOMAIN-SUFFIX,aisnogames.com
   - DOMAIN-SUFFIX,aistudio-app.com
   - DOMAIN-SUFFIX,aizerox.com
   - DOMAIN-SUFFIX,akamaihd.net
@@ -199,6 +201,7 @@ payload:
   - DOMAIN-SUFFIX,gzybao.com
   - DOMAIN-SUFFIX,halvie.com
   - DOMAIN-SUFFIX,ham.xin
+  - DOMAIN-SUFFIX,hangnakeji.com
   - DOMAIN-SUFFIX,haoxueche.com
   - DOMAIN-SUFFIX,harbourmooc.com
   - DOMAIN-SUFFIX,hbcof.com
@@ -214,6 +217,7 @@ payload:
   - DOMAIN-SUFFIX,hsbc.com.hk
   - DOMAIN-SUFFIX,hstbroker.com
   - DOMAIN-SUFFIX,hszq6.com
+  - DOMAIN-SUFFIX,htkgsx.com
   - DOMAIN-SUFFIX,hub.crdz.gq
   - DOMAIN-SUFFIX,hub.gitmirror.com
   - DOMAIN-SUFFIX,hub.rat.dev
@@ -233,7 +237,7 @@ payload:
   - DOMAIN-SUFFIX,ilucky.net
   - DOMAIN-SUFFIX,imacos.top
   - DOMAIN-SUFFIX,immortalwrt.org
-  - DOMAIN-SUFFIX,infini.money
+  - DOMAIN-SUFFIX,iosgujian.com
   - DOMAIN-SUFFIX,iotrix.net
   - DOMAIN-SUFFIX,ip159.com
   - DOMAIN-SUFFIX,ip6.seeip.org
@@ -328,6 +332,7 @@ payload:
   - DOMAIN-SUFFIX,paperang.com
   - DOMAIN-SUFFIX,passnat.com
   - DOMAIN-SUFFIX,pixcheese.com
+  - DOMAIN-SUFFIX,pkghund.com
   - DOMAIN-SUFFIX,plusde1.younoyes.com
   - DOMAIN-SUFFIX,plushk1.younoyes.com
   - DOMAIN-SUFFIX,plushk2.younoyes.com
@@ -494,6 +499,7 @@ payload:
   - DOMAIN-SUFFIX,ztytech.com
   - DOMAIN-SUFFIX,zuobiao.press
   - DOMAIN-SUFFIX,zzz-log-upload-os.hoyoverse.com
+  - SRC-PORT,41641
   - IP-CIDR,108.174.48.100/32,no-resolve
   - IP-CIDR,218.78.7.16/32,no-resolve
   - IP-CIDR,5.5.5.5/32,no-resolve
