@@ -269,17 +269,59 @@ DOMAIN-SUFFIX,axuex.top
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# 听书网站 / add by Telegram user: 哈Lay / Date: 2026-02-01 22:51:50
+DOMAIN-SUFFIX,365ting.com
+# add by Telegram user: Aethersailor / Date: 2026-02-01 21:20:36
+DOMAIN-SUFFIX,0044696.com
+# add by Telegram user: Aethersailor / Date: 2026-02-01 19:16:40
+DOMAIN-SUFFIX,pkghund.com
+# add by Telegram user: Aethersailor / Date: 2026-02-01 15:40:42
+DOMAIN-SUFFIX,htkgsx.com
+# add by Telegram user: X_X233 / Date: 2026-02-01 15:36:09
+DOMAIN-SUFFIX,hangnakeji.com
+# 自用 / add by Telegram user: along / Date: 2026-01-31 19:38:38
+DOMAIN-SUFFIX,alonginwind.top
+# 自用 / add by Telegram user: along / Date: 2026-01-31 19:37:29
+DOMAIN-SUFFIX,alonginwind.eu.org
+# 云平台 / add by Telegram user: along / Date: 2026-01-31 19:27:59
+DOMAIN-SUFFIX,shuangqingtech.com
+# add by Telegram user: Evan / Date: 2026-01-31 13:18:47
+DOMAIN-SUFFIX,nanhuabx.com
+# 共享账号出售平台 / add by Telegram user: abcd / Date: 2026-01-31 00:13:30
+DOMAIN-SUFFIX,hezuvip.com
+# 主机游戏模拟器软件服务器 / add by Telegram user: abcd / Date: 2026-01-30 23:18:06
+DOMAIN-SUFFIX,ponyemu.com
+# 高校教务系统 / add by Telegram user: abcd / Date: 2026-01-30 23:13:44
+DOMAIN-SUFFIX,xiqueer.com
+# add by Telegram user: Iceberg / Date: 2026-01-30 01:56:19
+DOMAIN-SUFFIX,jieyoutsg.com
+# add by Telegram user: Iceberg / Date: 2026-01-30 01:55:40
+DOMAIN-SUFFIX,medtechshare.com
+# add by Telegram user: Iceberg / Date: 2026-01-30 01:54:58
+DOMAIN-SUFFIX,dayilive.com
+# nat 类型检测 / add by Telegram user: 一只 / Date: 2026-01-26 21:02:18
+DOMAIN-SUFFIX,natchecker.com
+# add by Telegram user: 蛋中央 / Date: 2026-01-26 20:34:21
+DOMAIN-SUFFIX,mchuiji.com
+# add by Telegram user: 蛋中央 / Date: 2026-01-26 20:08:51
+DOMAIN-SUFFIX,mcxyzt.cc
+# ios 固件下载
+DOMAIN-SUFFIX,iosgujian.com
+# 手游无期迷途官网
+DOMAIN-SUFFIX,aisnogames.com
 
-
-
-
-# 2026.1.22 分类整理完毕
+# 2026.1.25 分类整理完毕
 
 # ---------------------------------------
 # 以下域名已提交 PR
 
 # PR 至 felixonmars/dnsmasq-china-list
-
+# 教育网站 / add by Telegram user: Awt / Date: 2026-01-25 13:16:28
+DOMAIN-SUFFIX,harbourmooc.com
+# add by Telegram user: r / Date: 2026-01-23 16:13:33
+DOMAIN-SUFFIX,zqin758.xyz
+# https://github.com/Aethersailor/Custom_OpenClash_Rules/issues/355
+DOMAIN-SUFFIX,nanshe-tech.com
 # add by Telegram user: Mairs / Date: 2026-01-22 17:59:20
 DOMAIN-SUFFIX,tcp.mk
 # add by Telegram user: Mairs / Date: 2026-01-22 17:58:29
