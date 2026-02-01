@@ -1,18 +1,19 @@
 # Generated from rule/Custom_Direct.list
-# REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
-# SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 483
+# REPO: https://github.com/pzyyll/Custom_OpenClash_Rules
+# SOURCE: https://github.com/pzyyll/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
+# TOTAL: 495
 
 payload:
   - '*m-team*'
-  - '*oracle*'
   - '*quickconnect*'
   - '*synology*'
+  - '+.0044696.com'
   - '+.03241119.xyz'
   - '+.112114.xyz'
   - '+.115cdn.de'
   - '+.1996999.xyz'
   - '+.204cloud.com'
+  - '+.365ting.com'
   - '+.3d-apollo.com'
   - '+.3dwhere.com'
   - '+.3gxk.net'
@@ -44,6 +45,7 @@ payload:
   - '+.aichangbaishan.com'
   - '+.aidien.fun'
   - '+.aigodlike.com'
+  - '+.aisnogames.com'
   - '+.aistudio-app.com'
   - '+.aizerox.com'
   - '+.akamaihd.net'
@@ -199,6 +201,7 @@ payload:
   - '+.gzybao.com'
   - '+.halvie.com'
   - '+.ham.xin'
+  - '+.hangnakeji.com'
   - '+.haoxueche.com'
   - '+.harbourmooc.com'
   - '+.hbcof.com'
@@ -214,6 +217,7 @@ payload:
   - '+.hsbc.com.hk'
   - '+.hstbroker.com'
   - '+.hszq6.com'
+  - '+.htkgsx.com'
   - '+.hub.crdz.gq'
   - '+.hub.gitmirror.com'
   - '+.hub.rat.dev'
@@ -233,7 +237,7 @@ payload:
   - '+.ilucky.net'
   - '+.imacos.top'
   - '+.immortalwrt.org'
-  - '+.infini.money'
+  - '+.iosgujian.com'
   - '+.iotrix.net'
   - '+.ip159.com'
   - '+.ip6.seeip.org'
@@ -328,6 +332,7 @@ payload:
   - '+.paperang.com'
   - '+.passnat.com'
   - '+.pixcheese.com'
+  - '+.pkghund.com'
   - '+.plusde1.younoyes.com'
   - '+.plushk1.younoyes.com'
   - '+.plushk2.younoyes.com'
