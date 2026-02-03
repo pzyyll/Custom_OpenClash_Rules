@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 492
+# TOTAL: 497
 
 payload:
   - '*m-team*'
@@ -40,6 +40,7 @@ payload:
   - '+.adobe.com'
   - '+.afeica.com'
   - '+.afuns.me'
+  - '+.agoto.de'
   - '+.aibeike.com'
   - '+.aichangbaishan.com'
   - '+.aidien.fun'
@@ -47,6 +48,7 @@ payload:
   - '+.aigodlike.com'
   - '+.aisnogames.com'
   - '+.aistudio-app.com'
+  - '+.aizerox.com'
   - '+.akamaihd.net'
   - '+.akamaized.net'
   - '+.alonginwind.eu.org'
@@ -277,6 +279,7 @@ payload:
   - '+.lg3000.top'
   - '+.liunn.com'
   - '+.liveperson.net'
+  - '+.llmtech.de'
   - '+.longmenshuju.com'
   - '+.lsbj365.com'
   - '+.lucky.gd'
@@ -347,6 +350,7 @@ payload:
   - '+.ptl.gs'
   - '+.ptlgs.org'
   - '+.pwithe.com'
+  - '+.pzyyll.top'
   - '+.qiankunshopping.com'
   - '+.qianuni.com'
   - '+.qianxuecloud.com'
@@ -395,6 +399,7 @@ payload:
   - '+.tailgdd.com'
   - '+.tailscale.com'
   - '+.tangguobaohe.com'
+  - '+.tarzipc.top'
   - '+.tclai.top'
   - '+.tcp.mk'
   - '+.tcp.pub'
