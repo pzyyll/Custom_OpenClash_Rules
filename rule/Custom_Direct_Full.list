@@ -158,6 +158,7 @@ DOMAIN-SUFFIX,fzvcolco.com
 DOMAIN-SUFFIX,fzwqq.com
 DOMAIN-SUFFIX,gaishitongshu.com
 DOMAIN-SUFFIX,game.maj-soul.com
+DOMAIN-SUFFIX,gamepp.com
 DOMAIN-SUFFIX,gangtise.com
 DOMAIN-SUFFIX,gaojiua.com
 DOMAIN-SUFFIX,gaze.run
@@ -175,6 +176,7 @@ DOMAIN-SUFFIX,ghp.ci
 DOMAIN-SUFFIX,ghproxy.cc
 DOMAIN-SUFFIX,ghproxy.cfd
 DOMAIN-SUFFIX,ghps.cc
+DOMAIN-SUFFIX,giomeru.com
 DOMAIN-SUFFIX,girigirilove.com
 DOMAIN-SUFFIX,git.886.be
 DOMAIN-SUFFIX,github.abskoop.workers.dev
@@ -274,6 +276,7 @@ DOMAIN-SUFFIX,kuaicha888.com
 DOMAIN-SUFFIX,kyarucloud.moe
 DOMAIN-SUFFIX,lanyun.net
 DOMAIN-SUFFIX,laogongju.com
+DOMAIN-SUFFIX,latexlive.com
 DOMAIN-SUFFIX,leelen.com
 DOMAIN-SUFFIX,letaoedu.com
 DOMAIN-SUFFIX,lg3000.top
@@ -336,6 +339,7 @@ DOMAIN-SUFFIX,ourschool.cc
 DOMAIN-SUFFIX,p01.epsonconnect.com
 DOMAIN-SUFFIX,paperang.com
 DOMAIN-SUFFIX,passnat.com
+DOMAIN-SUFFIX,piedaochuan.top
 DOMAIN-SUFFIX,pixcheese.com
 DOMAIN-SUFFIX,pkghund.com
 DOMAIN-SUFFIX,plusde1.younoyes.com
@@ -358,6 +362,7 @@ DOMAIN-SUFFIX,qiankunshopping.com
 DOMAIN-SUFFIX,qianuni.com
 DOMAIN-SUFFIX,qianxuecloud.com
 DOMAIN-SUFFIX,qianxueyunke.com
+DOMAIN-SUFFIX,qiaoqiaoyun.com
 DOMAIN-SUFFIX,qiaoxuesi.com
 DOMAIN-SUFFIX,qinglue.com
 DOMAIN-SUFFIX,qmeng.top
@@ -408,6 +413,7 @@ DOMAIN-SUFFIX,tcp.mk
 DOMAIN-SUFFIX,tcp.pub
 DOMAIN-SUFFIX,tcp5.com
 DOMAIN-SUFFIX,tcy365.net
+DOMAIN-SUFFIX,tdrgame.top
 DOMAIN-SUFFIX,terra-master.com
 DOMAIN-SUFFIX,theluyuan.com
 DOMAIN-SUFFIX,thinkerride.com
@@ -461,6 +467,7 @@ DOMAIN-SUFFIX,xiaochuanyun.com
 DOMAIN-SUFFIX,xiaoxia.vip
 DOMAIN-SUFFIX,xiberia.net
 DOMAIN-SUFFIX,ximogo.com
+DOMAIN-SUFFIX,xingaochengtai.com
 DOMAIN-SUFFIX,xinghaiwaimai.com
 DOMAIN-SUFFIX,xingyaozhilian.com
 DOMAIN-SUFFIX,xiqueer.com
@@ -504,7 +511,10 @@ DOMAIN-SUFFIX,zsytit.com
 DOMAIN-SUFFIX,ztytech.com
 DOMAIN-SUFFIX,zuobiao.press
 DOMAIN-SUFFIX,zzz-log-upload-os.hoyoverse.com
+DST-PORT,7844
 IP-CIDR,108.174.48.100/32,no-resolve
+IP-CIDR,198.41.192.0/24,no-resolve
+IP-CIDR,198.41.200.0/24,no-resolve
 IP-CIDR,218.78.7.16/32,no-resolve
 IP-CIDR,5.5.5.5/32,no-resolve
 IP-CIDR,98.126.27.164/32,no-resolve
