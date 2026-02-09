@@ -13,6 +13,9 @@ DOMAIN-SUFFIX,tailscale.com
 SRC-PORT,41641
 # Cloudflare Tunnel
 DOMAIN-SUFFIX,argotunnel.com
+IP-CIDR,198.41.192.0/24,no-resolve
+IP-CIDR,198.41.200.0/24,no-resolve
+DST-PORT,7844
 # GitHub 反代 CDN
 DOMAIN-SUFFIX,gh-proxy.com
 DOMAIN-SUFFIX,gh.con.sh
@@ -269,6 +272,20 @@ DOMAIN-SUFFIX,axuex.top
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# add by Telegram user: y / Date: 2026-02-09 19:31:31
+DOMAIN-SUFFIX,tdrgame.top
+# 云端笔记 / add by Telegram user: y / Date: 2026-02-09 19:31:06
+DOMAIN-SUFFIX,piedaochuan.top
+# add by Telegram user: Aethersailor / Date: 2026-02-07 13:37:00
+DOMAIN-SUFFIX,xingaochengtai.com
+# 敲敲云 / add by Telegram user: Mairs / Date: 2026-02-07 11:05:23
+DOMAIN-SUFFIX,qiaoqiaoyun.com
+# 在线LaTeX公式编辑器 / add by Telegram user: 真怪誕呀 / Date: 2026-02-07 01:01:20
+DOMAIN-SUFFIX,latexlive.com
+# 游戏PP / add by Telegram user: 雪菜 / Date: 2026-02-06 13:45:01
+DOMAIN-SUFFIX,gamepp.com
+# add by Telegram user: Aethersailor / Date: 2026-02-04 16:59:37
+DOMAIN-SUFFIX,giomeru.com
 # Astral个人博客 / add by Telegram user: Astral / Date: 2026-02-04 11:15:26
 DOMAIN-SUFFIX,asgardion.space
 # 港话通 / add by Telegram user: 真怪誕呀 / Date: 2026-02-03 19:00:10

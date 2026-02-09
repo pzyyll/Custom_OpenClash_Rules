@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 499
+# TOTAL: 508
 
 payload:
   - DOMAIN-KEYWORD,m-team
@@ -160,6 +160,7 @@ payload:
   - DOMAIN-SUFFIX,fzwqq.com
   - DOMAIN-SUFFIX,gaishitongshu.com
   - DOMAIN-SUFFIX,game.maj-soul.com
+  - DOMAIN-SUFFIX,gamepp.com
   - DOMAIN-SUFFIX,gangtise.com
   - DOMAIN-SUFFIX,gaojiua.com
   - DOMAIN-SUFFIX,gaze.run
@@ -177,6 +178,7 @@ payload:
   - DOMAIN-SUFFIX,ghproxy.cc
   - DOMAIN-SUFFIX,ghproxy.cfd
   - DOMAIN-SUFFIX,ghps.cc
+  - DOMAIN-SUFFIX,giomeru.com
   - DOMAIN-SUFFIX,girigirilove.com
   - DOMAIN-SUFFIX,git.886.be
   - DOMAIN-SUFFIX,github.abskoop.workers.dev
@@ -276,6 +278,7 @@ payload:
   - DOMAIN-SUFFIX,kyarucloud.moe
   - DOMAIN-SUFFIX,lanyun.net
   - DOMAIN-SUFFIX,laogongju.com
+  - DOMAIN-SUFFIX,latexlive.com
   - DOMAIN-SUFFIX,leelen.com
   - DOMAIN-SUFFIX,letaoedu.com
   - DOMAIN-SUFFIX,lg3000.top
@@ -335,6 +338,7 @@ payload:
   - DOMAIN-SUFFIX,p01.epsonconnect.com
   - DOMAIN-SUFFIX,paperang.com
   - DOMAIN-SUFFIX,passnat.com
+  - DOMAIN-SUFFIX,piedaochuan.top
   - DOMAIN-SUFFIX,pixcheese.com
   - DOMAIN-SUFFIX,pkghund.com
   - DOMAIN-SUFFIX,plusde1.younoyes.com
@@ -357,6 +361,7 @@ payload:
   - DOMAIN-SUFFIX,qianuni.com
   - DOMAIN-SUFFIX,qianxuecloud.com
   - DOMAIN-SUFFIX,qianxueyunke.com
+  - DOMAIN-SUFFIX,qiaoqiaoyun.com
   - DOMAIN-SUFFIX,qiaoxuesi.com
   - DOMAIN-SUFFIX,qinglue.com
   - DOMAIN-SUFFIX,qmeng.top
@@ -407,6 +412,7 @@ payload:
   - DOMAIN-SUFFIX,tcp.pub
   - DOMAIN-SUFFIX,tcp5.com
   - DOMAIN-SUFFIX,tcy365.net
+  - DOMAIN-SUFFIX,tdrgame.top
   - DOMAIN-SUFFIX,terra-master.com
   - DOMAIN-SUFFIX,theluyuan.com
   - DOMAIN-SUFFIX,thinkerride.com
@@ -460,6 +466,7 @@ payload:
   - DOMAIN-SUFFIX,xiaoxia.vip
   - DOMAIN-SUFFIX,xiberia.net
   - DOMAIN-SUFFIX,ximogo.com
+  - DOMAIN-SUFFIX,xingaochengtai.com
   - DOMAIN-SUFFIX,xinghaiwaimai.com
   - DOMAIN-SUFFIX,xingyaozhilian.com
   - DOMAIN-SUFFIX,xiqueer.com
@@ -504,6 +511,8 @@ payload:
   - DOMAIN-SUFFIX,zuobiao.press
   - DOMAIN-SUFFIX,zzz-log-upload-os.hoyoverse.com
   - IP-CIDR,108.174.48.100/32,no-resolve
+  - IP-CIDR,198.41.192.0/24,no-resolve
+  - IP-CIDR,198.41.200.0/24,no-resolve
   - IP-CIDR,218.78.7.16/32,no-resolve
   - IP-CIDR,5.5.5.5/32,no-resolve
   - IP-CIDR,98.126.27.164/32,no-resolve
