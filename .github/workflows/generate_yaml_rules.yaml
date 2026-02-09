@@ -78,6 +78,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ -n $(git log origin/main..HEAD) ]]; then
+            git pull --rebase origin main
             git push origin HEAD:main
           else
             echo "No new commits to push."
