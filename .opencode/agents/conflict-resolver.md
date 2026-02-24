@@ -4,7 +4,7 @@ tools:
    bash: true
    read: true
 mode: subagent
-model: github-copilot/claude-sonnet-4.5
+model: github-copilot/claude-sonnet-4.6
 ---
 
 # Conflict Resolver Agent
