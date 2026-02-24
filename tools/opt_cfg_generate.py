@@ -199,7 +199,6 @@ def main():
     with open(FULL_CFG_FILE, "r", encoding="utf-8") as f:
         full_lines = f.readlines()
 
-
     merged_lines = merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_ext_lines)
 
     # Buffer output and apply global replacements
