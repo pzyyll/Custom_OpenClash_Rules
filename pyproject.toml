@@ -7,7 +7,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-generate = "tools.generate:main"
+generate = "tools.opt_cfg_generate:main"
 
 [build-system]
 requires = ["hatchling >= 1.26"]

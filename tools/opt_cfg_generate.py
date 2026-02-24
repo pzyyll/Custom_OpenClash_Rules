@@ -112,6 +112,17 @@ def is_proxy_group_anchor(line):
     return extract_proxy_group_name(line) == "🎯 全球直连"
 
 
+def inject_node_ext_names(line, node_ext_names):
+    """Inject node_ext group names before .* in a proxy group line."""
+    rvals = line.strip().partition("custom_proxy_group=")[2].split("`")
+    if rvals and rvals[-1].strip() == ".*":
+        rvals.pop()  # remove .*
+        rvals.extend(f"[]{node_name}" for node_name in node_ext_names)
+        rvals.append(".*")
+        return f"custom_proxy_group={'`'.join(rvals)}\n"
+    return line
+
+
 def merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, node_ext_lines):
     """Merge v2 rulesets, v2 proxy_groups, and node_ext data into full config lines.
 
@@ -168,7 +179,7 @@ def merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, n
             if not pg_inserted and is_proxy_group_anchor(line):
                 for pg_name in rule_pg_order:
                     if pg_name not in rule_pg_used:
-                        result.append(rule_pg_by_name[pg_name])
+                        result.append(inject_node_ext_names(rule_pg_by_name[pg_name], node_ext_names))
                         rule_pg_used.add(pg_name)
                 pg_inserted = True
                 # Insert node_ext group definitions before anchor
@@ -180,12 +191,7 @@ def merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, n
                 rule_pg_used.add(name)
 
             # Inject node_ext names before .* in proxy groups
-            rvals = line.strip().partition("custom_proxy_group=")[2].split("`")
-            if rvals and rvals[-1].strip() == ".*":
-                rvals.pop()  # remove .*
-                rvals.extend(f"[]{node_name}" for node_name in node_ext_names)
-                rvals.append(".*")
-                line = f"custom_proxy_group={'`'.join(rvals)}\n"
+            line = inject_node_ext_names(line, node_ext_names)
 
         result.append(line)
 
