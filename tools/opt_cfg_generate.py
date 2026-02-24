@@ -7,7 +7,7 @@ import io
 root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 # File paths
-V2_NODE_FILE = os.path.join(root_path, "cfg", "Custom_Clash_A1_Rule_Ext.ini")
+RULE_NODE_FILE = os.path.join(root_path, "cfg", "Custom_Clash_A1_Rule_Ext.ini")
 FULL_CFG_FILE = os.path.join(root_path, "cfg", "Custom_Clash_Full.ini")
 OUTPUT_FILE = os.path.join(root_path, "cfg", "Custom_Clash_Full_Opt.ini")
 NODE_EXT_FILE = os.path.join(root_path, "cfg", "Custom_Clash_A1_Node_Ext.ini")
@@ -19,7 +19,7 @@ PROXY_GROUP_START = ";custom_proxy_group-start"
 PROXY_GROUP_END = ";custom_proxy_group-end"
 
 
-def parse_v2_node_file(file_path):
+def parse_rule_node_file(file_path):
     """Parse v2 node file using state machine, return (rulesets, proxy_groups)."""
     rulesets = []
     proxy_groups = []
@@ -112,7 +112,7 @@ def is_proxy_group_anchor(line):
     return extract_proxy_group_name(line) == "🎯 全球直连"
 
 
-def merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_ext_lines):
+def merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, node_ext_lines):
     """Merge v2 rulesets, v2 proxy_groups, and node_ext data into full config lines.
 
     Rulesets: smart dedup, insert new ones before the GEOSITE,cn anchor.
@@ -120,14 +120,14 @@ def merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_
     Node_Ext groups: insert definitions before 🎯 全球直连 anchor, inject node names into .* groups.
     """
     # Build v2 proxy_group index by name, preserving order
-    v2_pg_by_name = {}
-    v2_pg_order = []
-    for line in v2_proxy_groups:
+    rule_pg_by_name = {}
+    rule_pg_order = []
+    for line in rule_proxy_groups:
         name = extract_proxy_group_name(line)
         if name:
-            v2_pg_by_name[name] = line
-            v2_pg_order.append(name)
-    v2_pg_used = set()
+            rule_pg_by_name[name] = line
+            rule_pg_order.append(name)
+    rule_pg_used = set()
 
     seen_ruleset_identities = set()
     result = []
@@ -153,11 +153,11 @@ def merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_
 
             # At the anchor, insert non-duplicate v2 rulesets before it
             if not ruleset_inserted and is_ruleset_anchor(line):
-                for v2_line in v2_rulesets:
-                    v2_id = extract_ruleset_identity(v2_line)
-                    if v2_id and v2_id not in seen_ruleset_identities:
-                        result.append(v2_line)
-                        seen_ruleset_identities.add(v2_id)
+                for rule_line in rule_rulesets:
+                    rule_id = extract_ruleset_identity(rule_line)
+                    if rule_id and rule_id not in seen_ruleset_identities:
+                        result.append(rule_line)
+                        seen_ruleset_identities.add(rule_id)
                 ruleset_inserted = True
 
         # Handle proxy_group lines
@@ -166,18 +166,18 @@ def merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_
 
             # At the anchor, insert unused v2 proxy groups before it
             if not pg_inserted and is_proxy_group_anchor(line):
-                for pg_name in v2_pg_order:
-                    if pg_name not in v2_pg_used:
-                        result.append(v2_pg_by_name[pg_name])
-                        v2_pg_used.add(pg_name)
+                for pg_name in rule_pg_order:
+                    if pg_name not in rule_pg_used:
+                        result.append(rule_pg_by_name[pg_name])
+                        rule_pg_used.add(pg_name)
                 pg_inserted = True
                 # Insert node_ext group definitions before anchor
                 result.extend(node_ext_lines)
 
             # Replace existing group with v2 version if available
-            if name and name in v2_pg_by_name:
-                line = v2_pg_by_name[name]
-                v2_pg_used.add(name)
+            if name and name in rule_pg_by_name:
+                line = rule_pg_by_name[name]
+                rule_pg_used.add(name)
 
             # Inject node_ext names before .* in proxy groups
             rvals = line.strip().partition("custom_proxy_group=")[2].split("`")
@@ -193,13 +193,13 @@ def merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_
 
 
 def main():
-    v2_rulesets, v2_proxy_groups = parse_v2_node_file(V2_NODE_FILE)
+    rule_rulesets, rule_proxy_groups = parse_rule_node_file(RULE_NODE_FILE)
     node_ext_names, node_ext_lines = parse_node_ext_file(NODE_EXT_FILE)
 
     with open(FULL_CFG_FILE, "r", encoding="utf-8") as f:
         full_lines = f.readlines()
 
-    merged_lines = merge_config(full_lines, v2_rulesets, v2_proxy_groups, node_ext_names, node_ext_lines)
+    merged_lines = merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, node_ext_lines)
 
     # Buffer output and apply global replacements
     string_buffer = io.StringIO()
