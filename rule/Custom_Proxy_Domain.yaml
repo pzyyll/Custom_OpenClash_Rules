@@ -1,10 +1,11 @@
 # Generated from rule/Custom_Proxy.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Proxy.list
-# TOTAL: 16
+# TOTAL: 17
 
 payload:
   - '+.7pzzv.us'
+  - '+.anyrouter.top'
   - '+.arduino.cc'
   - '+.clientservices.googleapis.com'
   - '+.cloudsync-prod.s3.us-east-1.amazonaws.com'
