@@ -1,10 +1,11 @@
 # Generated from rule/Custom_Proxy.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Proxy.list
-# TOTAL: 16
+# TOTAL: 17
 
 payload:
   - DOMAIN-SUFFIX,7pzzv.us
+  - DOMAIN-SUFFIX,anyrouter.top
   - DOMAIN-SUFFIX,arduino.cc
   - DOMAIN-SUFFIX,clientservices.googleapis.com
   - DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
