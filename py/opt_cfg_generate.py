@@ -101,10 +101,10 @@ def extract_proxy_group_name(line):
 def is_ruleset_anchor(line):
     """Check if line is the ruleset insertion anchor.
 
-    Matches 'ruleset=...,[]GEOSITE,cn' but not variants like
+    Matches 'ruleset=...,[]GEOSITE,gfw' but not variants like
     google-cn or category-games@cn.
     """
-    return line.strip().endswith(",[]GEOSITE,cn")
+    return line.strip().endswith(",[]GEOSITE,gfw")
 
 
 def is_proxy_group_anchor(line):
