@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 535
+# TOTAL: 542
 
 payload:
   - DOMAIN-KEYWORD,m-team
@@ -10,11 +10,13 @@ payload:
   - DOMAIN-SUFFIX,00333118.com
   - DOMAIN-SUFFIX,0044696.com
   - DOMAIN-SUFFIX,03241119.xyz
+  - DOMAIN-SUFFIX,0734cn.top
   - DOMAIN-SUFFIX,112114.xyz
   - DOMAIN-SUFFIX,115cdn.de
   - DOMAIN-SUFFIX,17van.com
   - DOMAIN-SUFFIX,1996999.xyz
   - DOMAIN-SUFFIX,204cloud.com
+  - DOMAIN-SUFFIX,2mcnxs.cc
   - DOMAIN-SUFFIX,365ting.com
   - DOMAIN-SUFFIX,3d-apollo.com
   - DOMAIN-SUFFIX,3dwhere.com
@@ -241,9 +243,11 @@ payload:
   - DOMAIN-SUFFIX,hub.rat.dev
   - DOMAIN-SUFFIX,hub.xdark.top
   - DOMAIN-SUFFIX,huikao8.com
+  - DOMAIN-SUFFIX,hutaoyun.top
   - DOMAIN-SUFFIX,hwbim.com
   - DOMAIN-SUFFIX,hwjianmo.com
   - DOMAIN-SUFFIX,hwzuku.com
+  - DOMAIN-SUFFIX,hybiome.com
   - DOMAIN-SUFFIX,hzlawyer.net
   - DOMAIN-SUFFIX,hzqsn.com
   - DOMAIN-SUFFIX,icvcs.com
@@ -306,6 +310,7 @@ payload:
   - DOMAIN-SUFFIX,m-team.io
   - DOMAIN-SUFFIX,machtalk.net
   - DOMAIN-SUFFIX,manfuz.co
+  - DOMAIN-SUFFIX,mblyun.com
   - DOMAIN-SUFFIX,mc-user.com
   - DOMAIN-SUFFIX,mchuiji.com
   - DOMAIN-SUFFIX,mcxyzt.cc
@@ -481,6 +486,7 @@ payload:
   - DOMAIN-SUFFIX,xdqtech.com
   - DOMAIN-SUFFIX,xdtool.com
   - DOMAIN-SUFFIX,xesabc.com
+  - DOMAIN-SUFFIX,xfltd.org
   - DOMAIN-SUFFIX,xiankabao.com
   - DOMAIN-SUFFIX,xiaobeiyangji.com
   - DOMAIN-SUFFIX,xiaochuanyun.com
@@ -524,6 +530,7 @@ payload:
   - DOMAIN-SUFFIX,zhituwujie.com
   - DOMAIN-SUFFIX,zhixingyunke.com
   - DOMAIN-SUFFIX,zhongancloud.com
+  - DOMAIN-SUFFIX,zhouyiy.com
   - DOMAIN-SUFFIX,zhu.today
   - DOMAIN-SUFFIX,zjxhedu.com
   - DOMAIN-SUFFIX,zmis.me
