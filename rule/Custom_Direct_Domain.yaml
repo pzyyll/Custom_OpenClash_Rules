@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 548
+# TOTAL: 549
 
 payload:
   - '*m-team*'
@@ -61,7 +61,7 @@ payload:
   - '+.akamaihd.net'
   - '+.akamaized.net'
   - '+.alonginwind.eu.org'
-  - '+.alonginwind.top'
+  - '+.alonginwind.to'
   - '+.aloys233.top'
   - '+.antping.com'
   - '+.anycubic.com'
@@ -294,6 +294,8 @@ payload:
   - '+.kaihong.com'
   - '+.kaijiejinrong.com'
   - '+.kancaibao.com'
+  - '+.kaspersky-labs.com'
+  - '+.kaspersky.com'
   - '+.kcbd.top'
   - '+.kejiweixun.com'
   - '+.keyoo.com'
@@ -301,7 +303,6 @@ payload:
   - '+.kit327.com'
   - '+.kmeila.com'
   - '+.kuaicha888.com'
-  - '+.kyarucloud.moe'
   - '+.lanyun.net'
   - '+.laogongju.com'
   - '+.latexlive.com'
