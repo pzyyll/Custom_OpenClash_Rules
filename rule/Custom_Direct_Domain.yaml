@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 559
+# TOTAL: 562
 
 payload:
   - '*m-team*'
@@ -177,6 +177,7 @@ payload:
   - '+.fsytss.com'
   - '+.ft07.com'
   - '+.functorz.com'
+  - '+.fuyinkeji.top'
   - '+.fuziche.com'
   - '+.fzshouji.com'
   - '+.fzvcolco.com'
@@ -407,6 +408,7 @@ payload:
   - '+.qmeng.top'
   - '+.quanxinfu.com'
   - '+.qweatherapi.com'
+  - '+.qzyun.net'
   - '+.rayws.top'
   - '+.redenmc.com'
   - '+.registry.dockermirror.com'
@@ -526,6 +528,7 @@ payload:
   - '+.xkkapk.com'
   - '+.xn--4kq62z5rby2qupq9ub.top'
   - '+.xn--cesw6hd3s99f.com'
+  - '+.xn--vhqr42drhf5k7b.com'
   - '+.xopenbeta.com'
   - '+.xuanyuancode.com'
   - '+.xuepaipai.com'
