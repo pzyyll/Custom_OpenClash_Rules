@@ -13,6 +13,7 @@ DOMAIN-SUFFIX,tailscale.com
 SRC-PORT,41641
 # Cloudflare Tunnel
 DOMAIN-SUFFIX,argotunnel.com
+DOMAIN-SUFFIX,cftunnel.com
 IP-CIDR,198.41.192.0/24,no-resolve
 IP-CIDR,198.41.200.0/24,no-resolve
 DST-PORT,7844
@@ -308,6 +309,10 @@ DOMAIN-SUFFIX,xgzb.top
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# 视频 / add by Telegram user: Man / Date: 2026-03-31 23:25:12
+DOMAIN-SUFFIX,66990000.xyz
+# 视频 / add by Telegram user: Man / Date: 2026-03-31 23:22:47
+DOMAIN-SUFFIX,emby.yun
 # 复利笔记小程序 / add by Telegram user: 🥝🥝🥝混个脸熟 / Date: 2026-03-31 00:28:03
 DOMAIN-SUFFIX,fuyinkeji.top
 # 网盘 / add by Telegram user: 哈Lay / Date: 2026-03-30 17:29:28
