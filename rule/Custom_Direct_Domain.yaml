@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 571
+# TOTAL: 568
 
 payload:
   - '*m-team*'
@@ -349,7 +349,6 @@ payload:
   - '+.mifeng.plus'
   - '+.mifon.com'
   - '+.minor-api-os.hoyoverse.com'
-  - '+.misea.top'
   - '+.mixly.org'
   - '+.mobai.sbs'
   - '+.modelscope.net'
@@ -366,7 +365,6 @@ payload:
   - '+.natchecker.com'
   - '+.neihang.net'
   - '+.netzz.net'
-  - '+.nhk.or.jp'
   - '+.nicezhuanye.com'
   - '+.nkxingxh.top'
   - '+.nn.ci'
@@ -401,7 +399,6 @@ payload:
   - '+.pool.ntp.org'
   - '+.powershellgallery.com'
   - '+.privateapi.xyz'
-  - '+.ptl.gs'
   - '+.ptlgs.org'
   - '+.pwithe.com'
   - '+.qianfan.app'
