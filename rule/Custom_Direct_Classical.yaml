@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 580
+# TOTAL: 584
 
 payload:
   - DOMAIN-KEYWORD,m-team
@@ -127,6 +127,7 @@ payload:
   - DOMAIN-SUFFIX,cocav.com
   - DOMAIN-SUFFIX,codeloop.top
   - DOMAIN-SUFFIX,coffee-iot.com
+  - DOMAIN-SUFFIX,cone-x.com
   - DOMAIN-SUFFIX,congmiqq.com
   - DOMAIN-SUFFIX,coros.com
   - DOMAIN-SUFFIX,crtyhr.com
@@ -294,6 +295,7 @@ payload:
   - DOMAIN-SUFFIX,jduoduo.com
   - DOMAIN-SUFFIX,jfjt.cc
   - DOMAIN-SUFFIX,jh96095.com
+  - DOMAIN-SUFFIX,jiangningwater.com
   - DOMAIN-SUFFIX,jiaoyanyun.com
   - DOMAIN-SUFFIX,jieyoutsg.com
   - DOMAIN-SUFFIX,jiliuwang.net
@@ -423,6 +425,7 @@ payload:
   - DOMAIN-SUFFIX,royqh.net
   - DOMAIN-SUFFIX,rsfcxq.com
   - DOMAIN-SUFFIX,ruijie.com
+  - DOMAIN-SUFFIX,rxcrs.com
   - DOMAIN-SUFFIX,saduck.top
   - DOMAIN-SUFFIX,sanligu.top
   - DOMAIN-SUFFIX,sapphiretech.com
@@ -477,6 +480,7 @@ payload:
   - DOMAIN-SUFFIX,tmallyc.com
   - DOMAIN-SUFFIX,tnas.link
   - DOMAIN-SUFFIX,tnas.online
+  - DOMAIN-SUFFIX,tongkask.com
   - DOMAIN-SUFFIX,tool56.com
   - DOMAIN-SUFFIX,topwd.top
   - DOMAIN-SUFFIX,tozi-cn.top

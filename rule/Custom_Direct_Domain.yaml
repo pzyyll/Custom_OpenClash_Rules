@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 573
+# TOTAL: 577
 
 payload:
   - '*m-team*'
@@ -127,6 +127,7 @@ payload:
   - '+.cocav.com'
   - '+.codeloop.top'
   - '+.coffee-iot.com'
+  - '+.cone-x.com'
   - '+.congmiqq.com'
   - '+.coros.com'
   - '+.crtyhr.com'
@@ -294,6 +295,7 @@ payload:
   - '+.jduoduo.com'
   - '+.jfjt.cc'
   - '+.jh96095.com'
+  - '+.jiangningwater.com'
   - '+.jiaoyanyun.com'
   - '+.jieyoutsg.com'
   - '+.jiliuwang.net'
@@ -423,6 +425,7 @@ payload:
   - '+.royqh.net'
   - '+.rsfcxq.com'
   - '+.ruijie.com'
+  - '+.rxcrs.com'
   - '+.saduck.top'
   - '+.sanligu.top'
   - '+.sapphiretech.com'
@@ -477,6 +480,7 @@ payload:
   - '+.tmallyc.com'
   - '+.tnas.link'
   - '+.tnas.online'
+  - '+.tongkask.com'
   - '+.tool56.com'
   - '+.topwd.top'
   - '+.tozi-cn.top'
