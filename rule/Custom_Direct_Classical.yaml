@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 593
+# TOTAL: 597
 
 payload:
   - DOMAIN-KEYWORD,m-team
@@ -336,6 +336,7 @@ payload:
   - DOMAIN-SUFFIX,lightmake.site
   - DOMAIN-SUFFIX,liunn.com
   - DOMAIN-SUFFIX,liveperson.net
+  - DOMAIN-SUFFIX,llmtech.de
   - DOMAIN-SUFFIX,longmenshuju.com
   - DOMAIN-SUFFIX,lsbj365.com
   - DOMAIN-SUFFIX,lucky.gd
@@ -413,6 +414,7 @@ payload:
   - DOMAIN-SUFFIX,privateapi.xyz
   - DOMAIN-SUFFIX,ptlgs.org
   - DOMAIN-SUFFIX,pwithe.com
+  - DOMAIN-SUFFIX,pzyyll.top
   - DOMAIN-SUFFIX,qianfan.app
   - DOMAIN-SUFFIX,qiankunshopping.com
   - DOMAIN-SUFFIX,qianuni.com
@@ -593,7 +595,6 @@ payload:
   - DOMAIN-SUFFIX,zuobiao.press
   - DOMAIN-SUFFIX,zysou.com
   - DOMAIN-SUFFIX,zzz-log-upload-os.hoyoverse.com
-  - SRC-PORT,41641
   - IP-CIDR,108.174.48.100/32,no-resolve
   - IP-CIDR,198.41.192.0/24,no-resolve
   - IP-CIDR,198.41.200.0/24,no-resolve
