@@ -1,2 +1,4 @@
 payload:
   - DOMAIN-KEYWORD,krak
+  - DOMAIN-KEYWORD,bybit
+  - DOMAIN-WILDCARD,*.eu
