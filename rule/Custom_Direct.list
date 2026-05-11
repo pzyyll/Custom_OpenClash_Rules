@@ -326,6 +326,42 @@ DOMAIN-SUFFIX,jsj.top
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# 某个有趣的网站 / add by Telegram user: Constas / Date: 2026-05-10 06:55:27
+DOMAIN-SUFFIX,linka2a.net
+# 企业官方域名 / add by Telegram user: Constas / Date: 2026-05-10 06:54:50
+DOMAIN-SUFFIX,infini-fantasy.com
+# 个人网站 / add by Telegram user: Constas / Date: 2026-05-10 06:54:19
+DOMAIN-SUFFIX,constasj.me
+# 应用过滤 / add by Telegram user: 雪菜 / Date: 2026-05-10 01:09:19
+DOMAIN-SUFFIX,openappfilter.com
+# 专业网站 / add by Telegram user: Aaa / Date: 2026-05-08 16:06:08
+DOMAIN-SUFFIX,ap-leasing.com
+# 速方云文件中转 / add by Telegram user: 花火 / Date: 2026-05-07 21:17:50
+DOMAIN-SUFFIX,suu-fun.com
+# add by Telegram user: Aethersailor / Date: 2026-05-07 12:27:21
+DOMAIN-SUFFIX,myrny.xin
+# 凯奇网络卡盟 / add by Telegram user: Norma / Date: 2026-05-06 16:08:33
+DOMAIN-SUFFIX,xyys.com
+# 华网网验系统 / add by Telegram user: Norma / Date: 2026-05-06 16:06:47
+DOMAIN-SUFFIX,hwwlyz.com
+# 喵提醒 / add by Telegram user: Norma / Date: 2026-05-06 16:06:07
+DOMAIN-SUFFIX,miaotixing.com
+# 图鉴打码 / add by Telegram user: Norma / Date: 2026-05-06 16:05:32
+DOMAIN-SUFFIX,ttshitu.com
+# 这个是闲管家的客服端连接 / add by Telegram user: Norma / Date: 2026-05-06 16:04:48
+DOMAIN-SUFFIX,goofish.pro
+# 盛趣游戏（原盛大游戏）的服务器域名 / add by Telegram user: Asaka / Date: 2026-05-05 13:47:25
+DOMAIN-SUFFIX,zjshulong.com
+# 一叶知秋api / add by Telegram user: 美 / Date: 2026-05-05 01:47:43
+DOMAIN-SUFFIX,88996api.cloud
+# 菲森科技 / add by Telegram user: 雪菜 / Date: 2026-05-03 13:40:41
+DOMAIN-SUFFIX,yayi360.com
+# 菲森 / add by Telegram user: 雪菜 / Date: 2026-05-02 13:56:42
+DOMAIN-SUFFIX,fussengroup.com
+# AI中转 / add by Telegram user: 嘿嘿 / Date: 2026-05-01 19:12:29
+DOMAIN-SUFFIX,qweapi.com
+# 共享记账小程序 / add by Telegram user: 美 / Date: 2026-05-01 18:30:08
+DOMAIN-SUFFIX,gongxiangjizhang.com
 # polo api的充值域名 / add by Telegram user: 美 / Date: 2026-04-26 22:28:41
 DOMAIN-SUFFIX,580ai.net
 # onetoken api地址 / add by Telegram user: 美 / Date: 2026-04-25 23:51:24
@@ -351,6 +387,14 @@ DOMAIN-SUFFIX,4kgj.com
 
 # PR 至 v2fly/domain-list-community.
 
+
+
+
+# ---------------------------------------
+# =======================================
+
+# 以下域名已被 GeoSite 上游项目收录
+
 # 塔吉多 / add by Telegram user: 雪菜 / Date: 2026-04-20 00:23:55
 DOMAIN-SUFFIX,tajiduo.com
 # 光鸭网盘 / add by Telegram user: XI / Date: 2026-04-19 01:55:14
@@ -371,13 +415,6 @@ DOMAIN-SUFFIX,lightmake.site
 DOMAIN-SUFFIX,cone-x.com
 # 南京市江宁水务集团小程序 / add by Telegram user: 法兰西 / Date: 2026-04-12 19:47:44
 DOMAIN-SUFFIX,jiangningwater.com
-
-
-# ---------------------------------------
-# =======================================
-
-# 以下域名已被 GeoSite 上游项目收录，定期删除
-
 # add by Telegram user: Aethersailor / Date: 2026-04-12 15:43:11
 DOMAIN-SUFFIX,tongkask.com
 # add by Telegram user: Aethersailor / Date: 2026-04-12 15:40:00
