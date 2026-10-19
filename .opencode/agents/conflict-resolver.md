@@ -80,7 +80,7 @@ After auto-resolving, report:
 ✅ Auto-resolved (theirs):
    - rule/Custom_Direct.list
    - rule/Custom_Proxy.list
-   - cfg/Custom_Clash_Opt.ini
+   - cfg/Custom_Clash_Full_Opt.ini
 
 ⚠️  Manual merge required:
    - cfg/Custom_Clash_Full.ini

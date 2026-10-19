@@ -9,7 +9,7 @@ OpenClash configuration template and rule management system for OpenWrt routers.
 - **Custom routing rules** (.list files in `rule/`)
 - **Automated workflows** for rule generation and conversion
 
-**DO NOT manually edit auto-generated files**: `Custom_Clash_Opt.ini`, `Custom_Direct_Full.list`, `Custom_Proxy_Full.list`, `*.yaml`, `*.mrs`
+**DO NOT manually edit auto-generated files**: `Custom_Clash_Full_Opt.ini`, `Custom_Direct_Full.list`, `Custom_Proxy_Full.list`, `*.yaml`, `*.mrs`
 
 **DO edit source files**: `Custom_Clash_Full.ini`, `Custom_Clash_A1_Node.ini`, `Custom_Direct.list`, `Custom_Proxy.list`, `*_Merge.list`
 
@@ -28,7 +28,7 @@ uv sync --locked --all-extras --dev
 ### Generate Rules and Configs
 
 ```bash
-# Main generation command (merges rules + generates Custom_Clash_Opt.ini)
+# Main generation command (merges rules + generates Custom_Clash_Full_Opt.ini)
 # This is the primary command for rule generation
 uv run generate
 
@@ -46,7 +46,7 @@ python py/generate_game_cdn.py
 grep -E '^[^#]' rule/Custom_Direct.list | grep -v -E '^(DOMAIN|IP-CIDR|GEOIP|USER-AGENT|PROCESS-NAME)' || echo "OK"
 
 # Test rule generation locally
-uv run generate && git diff cfg/Custom_Clash_Opt.ini rule/Custom_Direct_Full.list rule/Custom_Proxy_Full.list
+uv run generate && git diff cfg/Custom_Clash_Full_Opt.ini rule/Custom_Direct_Full.list rule/Custom_Proxy_Full.list
 
 # Manually test YAML to MRS conversion (requires mihomo binary)
 mihomo convert-ruleset domain yaml rule/Custom_Direct_Domain.yaml rule/Custom_Direct_Domain.mrs
@@ -211,8 +211,9 @@ custom_proxy_group=🚀 Proxy`select`[]NODE_GROUP`.*
 | File Changed | Workflow Triggered | Action |
 |--------------|-------------------|--------|
 | `rule/*.list` | `auto-generate-rules.yml` | Converts .list → .yaml + .mrs |
-| `cfg/Custom_Clash_Full.ini` | `update_clash_opt.yml` | Regenerates Custom_Clash_Opt.ini |
-| `cfg/Custom_Clash_A1_Node.ini` | `update_clash_opt.yml` | Regenerates Custom_Clash_Opt.ini |
+| `cfg/Custom_Clash_Full.ini` | `update_clash_opt.yml` | Regenerates Custom_Clash_Full_Opt.ini |
+| `cfg/Custom_Clash_A1_Node_Ext.ini` | `update_clash_opt.yml` | Regenerates Custom_Clash_Full_Opt.ini |
+| `cfg/Custom_Clash_A1_Rule_Ext.ini` | `update_clash_opt.yml` | Regenerates Custom_Clash_Full_Opt.ini |
 | `rule/*_Merge.list` | `update_clash_opt.yml` | Regenerates merged rules + Opt config |
 
 **Commits by Workflows**: Use `github-actions[bot]` author, one atomic commit per file.
@@ -255,7 +256,7 @@ vim cfg/Custom_Clash_Full.ini
 uv run generate
 
 # Check result
-git diff cfg/Custom_Clash_Opt.ini
+git diff cfg/Custom_Clash_Full_Opt.ini
 ```
 
 ## Performance Notes
