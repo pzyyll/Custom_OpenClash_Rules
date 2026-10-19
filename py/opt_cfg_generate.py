@@ -18,6 +18,8 @@ RULESET_END = ";ruleset-end"
 PROXY_GROUP_START = ";custom_proxy_group-start"
 PROXY_GROUP_END = ";custom_proxy_group-end"
 
+EXCLUDED_RULESET_SPECS = {"[]GEOSITE,google-cn"}
+
 
 def parse_rule_node_file(file_path):
     """Parse v2 node file using state machine, return (rulesets, proxy_groups)."""
@@ -195,7 +197,13 @@ def merge_config(full_lines, rule_rulesets, rule_proxy_groups, node_ext_names, n
 
         result.append(line)
 
-    return result
+    return [
+        line for line in result
+        if not (
+            (identity := extract_ruleset_identity(line))
+            and identity.partition(",")[2].strip() in EXCLUDED_RULESET_SPECS
+        )
+    ]
 
 
 def main():
