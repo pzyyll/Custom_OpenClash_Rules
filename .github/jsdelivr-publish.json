@@ -1,0 +1,63 @@
+{
+  "repository": "Aethersailor/Custom_OpenClash_Rules",
+  "branch": "main",
+  "ref_aliases": [
+    "main"
+  ],
+  "public_roots": [
+    "cfg",
+    "icon",
+    "overwrite",
+    "rule",
+    "script",
+    "shell",
+    "wiki"
+  ],
+  "deferred_sources": [
+    "rule/Custom_Direct.list",
+    "rule/Custom_Proxy.list",
+    "rule/Steam_CDN.list",
+    "rule/Encrypted_DNS.list",
+    "rule/Game_Download_CDN.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Africa.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_All-Servers.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Americas.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Antarctica.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Asia-All.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Europe.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Hong-Kong.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Japan.list",
+    "rule/game_rule/Battlefield-1/Battlefield-1_Windows-PC_Oceania.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_All-Servers.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Community-Portal.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Europe.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Hong-Kong-Redsec.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Japan.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Korea.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Middle-East.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Oceania.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_Singapore.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_South-Africa.list",
+    "rule/game_rule/Battlefield-6/Battlefield-6_United-States.list",
+    "rule/game_rule/Microsoft-Flight-Simulator-2020/Microsoft-Flight-Simulator-2020_All-Servers.list",
+    "rule/game_rule/Overwatch2/Overwatch2_Asia-Singapore.list"
+  ],
+  "snapshot_deferred_inputs": [
+    "py/generate_rules.py",
+    "cfg/Custom_Clash.ini"
+  ],
+  "generated_suffixes": [
+    "Domain.yaml",
+    "Domain.mrs",
+    "IP.yaml",
+    "IP.mrs",
+    "Classical.yaml",
+    "Classical_IP.yaml",
+    "Classical_Port.yaml"
+  ],
+  "excluded_prefixes": [
+    "overwrite/OpenClash_Overwrite"
+  ],
+  "excluded_path_parts": [],
+  "excluded_basenames": []
+}

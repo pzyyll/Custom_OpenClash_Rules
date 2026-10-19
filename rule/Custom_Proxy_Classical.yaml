@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Proxy.list
-# REPO: https://github.com/pzyyll/Custom_OpenClash_Rules
-# SOURCE: https://github.com/pzyyll/Custom_OpenClash_Rules/blob/main/rule/Custom_Proxy.list
-# TOTAL: 17
+# REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
+# SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Proxy.list
+# TOTAL: 19
 
 payload:
   - DOMAIN-SUFFIX,7pzzv.us
@@ -11,6 +11,7 @@ payload:
   - DOMAIN-SUFFIX,cloudsync-prod.s3.us-east-1.amazonaws.com
   - DOMAIN-SUFFIX,dmhy.org
   - DOMAIN-SUFFIX,googleapis.cn
+  - DOMAIN-SUFFIX,gstatic.com
   - DOMAIN-SUFFIX,hoyolab.com
   - DOMAIN-SUFFIX,hoyoverse.com
   - DOMAIN-SUFFIX,ip.sb
@@ -21,4 +22,4 @@ payload:
   - DOMAIN-SUFFIX,services.googleapis.cn
   - DOMAIN-SUFFIX,stun.playstation.net
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-
+  - IP-CIDR,207.241.224.2/32,no-resolve

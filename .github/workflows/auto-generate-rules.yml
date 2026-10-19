@@ -1,174 +1,178 @@
 name: Auto generate rules
 
 on:
+  workflow_call:
+    inputs:
+      source_before_sha:
+        description: Source-list parent revision supplied by an updater workflow
+        required: false
+        type: string
   push:
+    branches:
+      - main
     paths:
-      - 'rule/*.list'
+      - 'rule/Custom_Direct.list'
+      - 'rule/Custom_Proxy.list'
+      - 'rule/Steam_CDN.list'
+      - 'rule/Encrypted_DNS.list'
+      - 'rule/Game_Download_CDN.list'
+      - 'rule/game_rule/**/*.list'
+      - 'py/generate_rules.py'
+      - 'cfg/Custom_Clash.ini'
   workflow_dispatch:
+    inputs:
+      source_before_sha:
+        description: Source-list parent revision supplied by an updater workflow
+        required: false
+        type: string
 
 permissions:
   contents: write
 
-env:
-  TARGET_BRANCH: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.head_branch) || ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref_name) || (vars.WORK_BRANCH != '' && vars.WORK_BRANCH) || 'main' }}
+# All workflows that commit to main share this queue to avoid push races.
+concurrency:
+  group: main-writers
 
 jobs:
   generate-rules:
-    if: github.event_name != 'push' || github.ref_name == ((vars.WORK_BRANCH != '' && vars.WORK_BRANCH) || 'main')
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      purge_base_sha: ${{ steps.publication-range.outputs.purge_base_sha }}
+      publication_sha: ${{ steps.publish.outputs.publication_sha }}
 
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v6
+      - name: Checkout latest main branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           ref: main
           fetch-depth: 0
 
-      - name: Set Git identity
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Record source publication range
+        id: publication-range
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          REQUEST_BEFORE: ${{ inputs.source_before_sha }}
         run: |
+          if [ "$EVENT_NAME" = "push" ]; then
+            purge_base_sha="$EVENT_BEFORE"
+          else
+            purge_base_sha="$REQUEST_BEFORE"
+          fi
+
+          if [ -z "$purge_base_sha" ]; then
+            purge_base_sha="$(git rev-parse HEAD^)"
+          elif [ "${purge_base_sha//0/}" != "" ]; then
+            purge_base_sha="$(git rev-parse "${purge_base_sha}^{commit}")"
+          fi
+
+          echo "Source publication base: $purge_base_sha"
+          echo "purge_base_sha=$purge_base_sha" >> "$GITHUB_OUTPUT"
+
+      - name: Set up pinned Mihomo
+        uses: ./.github/actions/setup-mihomo
+
+      - name: Commit and push changes
+        id: publish
+        shell: bash
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.x'
+          generated_pathspecs=(
+            ':(glob)rule/*.yaml'
+            ':(glob)rule/*.mrs'
+            ':(glob)rule/game_rule/**/*.yaml'
+            ':(glob)rule/game_rule/**/*.mrs'
+            'cfg/Custom_Clash_Mainland.ini'
+          )
+          generated_excludes=(
+            ':(exclude,glob)rule/*.yaml'
+            ':(exclude,glob)rule/*.mrs'
+            ':(exclude,glob)rule/game_rule/**/*.yaml'
+            ':(exclude,glob)rule/game_rule/**/*.mrs'
+            ':(exclude)cfg/Custom_Clash_Mainland.ini'
+          )
+          remote_main_sha() {
+            git ls-remote --exit-code origin refs/heads/main |
+              awk 'NR == 1 { print $1 }'
+          }
 
-      - name: Download mihomo
-        run: |
-          MIHOMO_VERSION="v1.19.18"
-          echo "Downloading mihomo ${MIHOMO_VERSION}..."
-          wget -q "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-          gunzip "mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
-          chmod +x "mihomo-linux-amd64-${MIHOMO_VERSION}"
-          sudo mv "mihomo-linux-amd64-${MIHOMO_VERSION}" /usr/local/bin/mihomo
-          echo "mihomo ${MIHOMO_VERSION} installed successfully"
+          publication_sha=""
+          for attempt in 1 2 3; do
+            echo "Generation and publication attempt ${attempt}/3"
+            git fetch --no-tags origin main
+            git reset --hard origin/main
+            python py/generate_rules.py --mihomo mihomo
+            cp cfg/Custom_Clash.ini cfg/Custom_Clash_Mainland.ini
 
-      - name: Generate YAML from LIST files
-        run: |
-          FILES=("Custom_Direct" "Custom_Proxy" "Steam_CDN" "Encrypted_DNS")
-
-          for base_name in "${FILES[@]}"; do
-            list_file="rule/${base_name}.list"
-
-            domain_yaml_file="rule/${base_name}_Domain.yaml"
-            ip_yaml_file="rule/${base_name}_IP.yaml"
-            classical_yaml_file="rule/${base_name}_Classical.yaml"
-            classical_ip_yaml_file="rule/${base_name}_Classical_IP.yaml"
-
-            domain_rules=$(grep -E '^(DOMAIN,|DOMAIN-|DOMAIN-SUFFIX|DOMAIN-KEYWORD)' "$list_file" | sed -E "s/^DOMAIN-SUFFIX,(.+)/  - '+.\1'/" | sed -E "s/^DOMAIN-KEYWORD,(.+)/  - '*\1*'/" | sed -E "s/^DOMAIN,(.+)/  - '\1'/" | sort)
-            ip_rules=$(grep -E '^(IP-|IP-CIDR)' "$list_file" | sed -E "s/^IP-CIDR,([^,]+).*/  - '\1'/" | sed -E "s/^IP,([^,]+).*/  - '\1'/" | sort)
-
-            classical_rules=$(grep -E '^(DOMAIN,|DOMAIN-|DOMAIN-SUFFIX|DOMAIN-KEYWORD|SRC-PORT)' "$list_file" | sed -E "s/^(.*)/  - \1/" | sort)
-            classical_rules+=$'\n'
-            classical_rules+=$(grep -E '^(IP-|IP-CIDR)' "$list_file" | sed -E "s/^IP-CIDR,([^,]+).*/  - IP-CIDR,\1,no-resolve/" | sed -E "s/^IP,([^,]+).*/  - IP-CIDR,\1,no-resolve/" | sort)
-
-            classical_ip_rules=$({
-              grep -E '^(IP-|IP-CIDR)' "$list_file" | sed -E "s/^IP-CIDR,([^,]+).*/  - IP-CIDR,\1,no-resolve/" | sed -E "s/^IP,([^,]+).*/  - IP-CIDR,\1,no-resolve/"
-              grep -E '^SRC-PORT' "$list_file" | sed -E "s/^(.*)/  - \1/"
-            } | sort)
-
-            generate_and_commit() {
-              file="$1"
-              content="$2"
-              total=$(echo "$content" | grep -c '  - ' || true)
-
-              echo "# Generated from ${list_file}" > "$file"
-              echo "# REPO: https://github.com/${{ github.repository }}" >> "$file"
-              echo "# SOURCE: https://github.com/${{ github.repository }}/blob/${TARGET_BRANCH}/${list_file}" >> "$file"
-              echo "# TOTAL: ${total}" >> "$file"
-              echo "" >> "$file"
-              echo "payload:" >> "$file"
-              echo "$content" >> "$file"
-
-              if [[ -n $(git status --porcelain "$file") ]]; then
-                git add "$file"
-                git commit -m "chore(rules): auto generate $(basename "$file") from $(basename "$list_file")"
-              else
-                echo "No changes in ${file}, skip commit."
-              fi
-            }
-
-            generate_and_commit "$domain_yaml_file" "$domain_rules"
-            generate_and_commit "$ip_yaml_file" "$ip_rules"
-            generate_and_commit "$classical_yaml_file" "$classical_rules"
-            generate_and_commit "$classical_ip_yaml_file" "$classical_ip_rules"
-
-          done
-
-      - name: Convert YAML to MRS
-        run: |
-          echo "Converting YAML files to MRS format..."
-          
-          # Convert Domain YAML files
-          for yaml_file in rule/*_Domain.yaml; do
-            if ! grep -q '^  - ' "$yaml_file"; then
-              echo "Skipping $yaml_file (no domain rules)"
-              continue
-            fi
-
-            mrs_file="${yaml_file%.yaml}.mrs"
-            echo "Converting $yaml_file to $mrs_file (domain behavior)"
-            mihomo convert-ruleset domain yaml "$yaml_file" "$mrs_file"
-            
-            if [ -f "$mrs_file" ]; then
-              echo "✓ Generated $mrs_file"
-              
-              # Commit each MRS file individually
-              if [[ -n $(git status --porcelain "$mrs_file") ]]; then
-                git add "$mrs_file"
-                git commit -m "chore(rules): auto generate $(basename "$mrs_file") from $(basename "$yaml_file")"
-              else
-                echo "No changes in ${mrs_file}, skip commit."
-              fi
-            else
-              echo "✗ Failed to generate $mrs_file"
+            unexpected_changes="$(
+              git status --short --untracked-files=all -- . \
+                "${generated_excludes[@]}"
+            )"
+            if [ -n "$unexpected_changes" ]; then
+              echo "Generator modified files outside the derived-rule allowlist:" >&2
+              printf '%s\n' "$unexpected_changes" >&2
               exit 1
             fi
-          done
-          
-          # Convert IP YAML files (exclude Classical_IP)
-          for yaml_file in rule/*_IP.yaml; do
-            # Skip Classical_IP files
-            if [[ "$yaml_file" == *"_Classical_IP.yaml" ]]; then
-              echo "Skipping $yaml_file (Classical format not supported in MRS)"
+
+            base_sha="$(git rev-parse HEAD)"
+            git add -A -- "${generated_pathspecs[@]}"
+
+            if git diff --cached --quiet; then
+              remote_sha="$(remote_main_sha)"
+              if [ "$remote_sha" = "$base_sha" ]; then
+                echo "No generated rule changes, skip commit and push."
+                publication_sha="$base_sha"
+                break
+              fi
+              echo "main advanced before the no-op result was confirmed; retrying."
               continue
             fi
 
-            if ! grep -q '^  - ' "$yaml_file"; then
-              echo "Skipping $yaml_file (no IP rules)"
+            git commit -m "chore(rules): auto generate derived rule files"
+            candidate_sha="$(git rev-parse HEAD)"
+            if git push origin HEAD:main; then
+              remote_sha="$(remote_main_sha)"
+              if [ "$remote_sha" = "$candidate_sha" ]; then
+                publication_sha="$candidate_sha"
+                break
+              fi
+              echo "main advanced after publication; regenerating from its new head."
               continue
             fi
-            
-            mrs_file="${yaml_file%.yaml}.mrs"
-            echo "Converting $yaml_file to $mrs_file (ipcidr behavior)"
-            mihomo convert-ruleset ipcidr yaml "$yaml_file" "$mrs_file"
-            
-            if [ -f "$mrs_file" ]; then
-              echo "✓ Generated $mrs_file"
-              
-              # Commit each MRS file individually
-              if [[ -n $(git status --porcelain "$mrs_file") ]]; then
-                git add "$mrs_file"
-                git commit -m "chore(rules): auto generate $(basename "$mrs_file") from $(basename "$yaml_file")"
-              else
-                echo "No changes in ${mrs_file}, skip commit."
-              fi
-            else
-              echo "✗ Failed to generate $mrs_file"
+
+            remote_sha="$(remote_main_sha)"
+            if [ "$remote_sha" = "$base_sha" ]; then
+              echo "Push failed without a competing main update; refusing to hide the error." >&2
               exit 1
             fi
+            echo "Push raced with a newer main revision; regenerating and retrying."
           done
 
-      - name: Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git fetch origin main
-          git pull --rebase origin main || true
-
-          if ! git diff --cached --quiet || [ -n "$(git log origin/main..HEAD --oneline)" ]; then
-            git push origin HEAD:main
-          else
-            echo "Nothing to push."
+          if [ -z "$publication_sha" ]; then
+            echo "Could not publish derived rules after 3 attempts." >&2
+            exit 1
           fi
+
+          echo "Final revision to publish: $publication_sha"
+          echo "publication_sha=$publication_sha" >> "$GITHUB_OUTPUT"
+
+  # Purge the cache keys belonging to the published generation result.
+  purge-generated:
+    needs: generate-rules
+    permissions:
+      contents: read
+    uses: ./.github/workflows/purge-jsdelivr.yml
+    secrets: inherit
+    with:
+      before_sha: ${{ needs.generate-rules.outputs.purge_base_sha }}
+      after_sha: ${{ needs.generate-rules.outputs.publication_sha }}
+      generation_complete: true

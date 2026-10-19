@@ -2,30 +2,113 @@ name: Dependabot auto-merge
 
 on:
   pull_request_target:
-    types: [opened, reopened, synchronize, ready_for_review, labeled]
+    branches: [main]
+    types: [opened, reopened, synchronize, ready_for_review]
+  schedule:
+    - cron: '47 * * * *'
+  workflow_dispatch:
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: dependabot-automerge
+  cancel-in-progress: false
 
 jobs:
-  enable-automerge:
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && contains(github.event.pull_request.labels.*.name, 'automerge')
+  merge:
+    if: >-
+      github.repository == 'Aethersailor/Custom_OpenClash_Rules' &&
+      (github.event_name != 'pull_request_target' ||
+       github.event.pull_request.user.login == 'dependabot[bot]')
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - name: Enable auto-merge
-        uses: actions/github-script@v8
+      # Use only GitHub metadata; never check out or execute pull-request code.
+      - name: Merge Dependabot pull requests
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
+          # PAT merges also trigger the normal main-branch publication workflows.
+          github-token: ${{ secrets.GH_PAT }}
           script: |
-            const pr = context.payload.pull_request;
-            await github.graphql(
-              `mutation($pullRequestId: ID!, $mergeMethod: PullRequestMergeMethod!) {
-                enablePullRequestAutoMerge(input: {pullRequestId: $pullRequestId, mergeMethod: $mergeMethod}) {
-                  pullRequest { number }
-                }
-              }`,
-              {
-                pullRequestId: pr.node_id,
-                mergeMethod: "SQUASH",
-              }
+            const { owner, repo } = context.repo;
+            const repository = `${owner}/${repo}`;
+            const base = context.payload.repository.default_branch;
+            const eventPr = context.payload.pull_request;
+            const candidates = eventPr ? [eventPr] : await github.paginate(
+              github.rest.pulls.list,
+              { owner, repo, state: "open", base, per_page: 100 }
             );
+            const eligible = (pr) => (
+              pr.state === "open" && !pr.draft &&
+              pr.user.login === "dependabot[bot]" && pr.user.type === "Bot" &&
+              pr.base.ref === base && pr.base.repo.full_name === repository &&
+              pr.head.repo?.full_name === repository &&
+              pr.head.ref.startsWith("dependabot/")
+            );
+            const dependencyFile = (file) => (
+              file.status === "modified" && (
+                /^\.github\/workflows\/[^/]+\.ya?ml$/.test(file.filename) ||
+                /^\.github\/actions\/.+\/action\.ya?ml$/.test(file.filename) ||
+                /^requirements[^/]*\.txt$/.test(file.filename) ||
+                /^workers\/repository-mirror\/package(?:-lock)?\.json$/.test(file.filename)
+              )
+            );
+
+            for (const candidate of candidates) {
+              if (candidate.user.login !== "dependabot[bot]") continue;
+              try {
+                const { data: pr } = await github.rest.pulls.get({
+                  owner, repo, pull_number: candidate.number,
+                });
+                if (!eligible(pr)) continue;
+                if (eventPr && pr.head.sha !== eventPr.head.sha) {
+                  core.info(`PR #${pr.number} has a newer head; skip this stale event.`);
+                  continue;
+                }
+
+                const commits = await github.paginate(github.rest.pulls.listCommits, {
+                  owner, repo, pull_number: pr.number, per_page: 100,
+                });
+                if (commits.length !== pr.commits || !commits.every((commit) =>
+                  commit.author?.login === "dependabot[bot]" &&
+                  commit.commit.verification?.verified === true
+                )) {
+                  core.warning(`PR #${pr.number} contains commits not verified as Dependabot.`);
+                  continue;
+                }
+                const files = await github.paginate(github.rest.pulls.listFiles, {
+                  owner, repo, pull_number: pr.number, per_page: 100,
+                });
+                if (!files.length || files.length !== pr.changed_files ||
+                    !files.every(dependencyFile)) {
+                  core.warning(`PR #${pr.number} changes files outside dependency updates.`);
+                  continue;
+                }
+
+                const { data: current } = await github.rest.pulls.get({
+                  owner, repo, pull_number: pr.number,
+                });
+                if (!eligible(current) || current.head.sha !== pr.head.sha ||
+                    current.base.sha !== pr.base.sha) {
+                  core.info(`PR #${pr.number} changed during inspection; retry on the next event or schedule.`);
+                  continue;
+                }
+                const { data: result } = await github.rest.pulls.merge({
+                  owner, repo, pull_number: pr.number,
+                  merge_method: "squash", sha: pr.head.sha,
+                });
+                if (result.merged) {
+                  core.info(`Merged Dependabot PR #${pr.number} at ${result.sha}.`);
+                } else {
+                  core.setFailed(`PR #${pr.number}: ${result.message}`);
+                }
+              } catch (error) {
+                if ([405, 409, 422].includes(error.status)) {
+                  core.warning(`PR #${candidate.number} is not currently mergeable; the next event or schedule will retry: ${error.message}`);
+                  continue;
+                }
+                core.setFailed(`PR #${candidate.number}: ${error.message}`);
+              }
+            }
