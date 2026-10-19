@@ -1,15 +1,23 @@
-# 🐍 Python Scripts
+# Python 维护脚本
 
-## 🛠️ 项目辅助与维护脚本 🛠️
-
-这里存放项目使用的 Python 维护脚本（如规则处理、文件合并等）。
+本目录存放规则生成、上游数据合并和安装器同步脚本，主要供项目维护与 GitHub Actions 使用。
 
 > [!CAUTION]
-> **非开发人员请勿随意运行此目录下的脚本，可能会导致规则文件损坏。**
+> 部分脚本的默认模式会改写仓库文件。只需检查当前状态时，应使用脚本提供的 `--check` 参数。
 
----
+## 脚本说明
 
-## 📂 目录结构
+| 脚本 | 作用 | 主要输出 |
+| --- | --- | --- |
+| [`generate_game_cdn.py`](generate_game_cdn.py) | 合并 [v2fly/domain-list-community](https://github.com/v2fly/domain-list-community) 上游与 `Steam_CDN.list`，按域名和 CIDR 覆盖关系去重 | `rule/Game_Download_CDN.list` |
+| [`generate_rules.py`](generate_rules.py) | 从 `rule/` 顶层的 5 个 `.list` 来源和 `rule/game_rule/**/*.list` 递归生成 Domain、IP、Classical 和端口 YAML，清理失去 `.list` 来源的派生文件；传入 Mihomo 可执行文件时同时生成非空 MRS | `rule/*_Domain.*`、`rule/*_IP.*`、`rule/*_Classical*.yaml`、`rule/game_rule/**/*_Domain.*`、`rule/game_rule/**/*_IP.*`、`rule/game_rule/**/*_Classical*.yaml` |
+| [`extract_uu_game_routes.py`](extract_uu_game_routes.py) | 从 UU 路由模式虚拟网卡提取目标 IPv4 路由，过滤本地、保留和被上级网段覆盖的地址 | 指定游戏目录中的区服 `.list` |
+| [`sync_installer_common.py`](sync_installer_common.py) | 以完整安装器中的共享函数为维护来源，同步轻量安装器的对应实现 | `shell/install_openclash_dev.sh` |
+| [`update_encrypted_dns.py`](update_encrypted_dns.py) | 汇总 HaGeZi、DNSCrypt 与编译后的 `geosite:category-doh`，生成加密 DNS 域名和 IP 规则 | `rule/Encrypted_DNS.list` |
 
-- **[generate_game_cdn.py](generate_game_cdn.py)**: 自动从 v2fly/domain-list-community 上游下载并生成 `Game_Download_CDN.list` 规则文件。
-- **`archived/`**: 存放已废弃或不再使用的历史脚本。[查看详情](archived/README.md)
+## 维护边界
+
+- 修改 `.list` 来源后，通过 `generate_rules.py` 重建派生文件，不要直接维护派生 YAML 或 MRS。
+- 修改完整安装器中的共享函数后，运行 `sync_installer_common.py` 同步轻量安装器。
+- `generate_game_cdn.py` 和 `update_encrypted_dns.py` 的写入模式需要访问上游；`--check` 只验证已有输出。
+- 生成结果由维护者人工测试，确认实际配置加载和分流行为。

@@ -1,139 +1,302 @@
 name: Purge jsDelivr Cache
 
 on:
+  # Every main push enters the publisher. The versioned publication contract,
+  # not a duplicated paths filter, decides whether the run is a fast no-op.
   push:
-    paths:
-      - 'cfg/**'
-      - 'rule/**'
-      - 'game_rule/**'
-      - 'shell/**'
-      - 'overwrite/**'
-      - '!**/archived/**'
-      - '!**/README.md'
-      - '!README.md'
+    branches:
+      - main
 
-  workflow_run:
-    workflows:
-      - Auto generate rules
-      - Auto update mainland config
-      - Auto Update Game CDN Rules
-      - Sync and Modify Custom_Clash.ini
-    types:
-      - completed
+  workflow_dispatch:
+    inputs:
+      before_sha:
+        description: First revision in the repair range (exclusive; defaults to after_sha^)
+        required: false
+        type: string
+      after_sha:
+        description: Published revision to verify (defaults to the selected main revision)
+        required: false
+        type: string
+      generation_complete:
+        description: The selected revision already contains all generated outputs
+        required: false
+        default: false
+        type: boolean
 
-  workflow_dispatch:  # 支持手动触发
+  workflow_call:
+    inputs:
+      before_sha:
+        description: First revision in the publication range (exclusive)
+        required: true
+        type: string
+      after_sha:
+        description: Exact revision to publish and verify
+        required: true
+        type: string
+      generation_complete:
+        description: The selected revision already contains all generated outputs
+        required: false
+        default: false
+        type: boolean
 
-env:
-  TARGET_BRANCH: ${{ (github.event_name == 'workflow_run' && github.event.workflow_run.head_branch) || ((github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref_name) || (vars.WORK_BRANCH != '' && vars.WORK_BRANCH) || 'main' }}
+permissions:
+  contents: read
+
+concurrency:
+  group: jsdelivr-publisher-${{ github.repository }}-main
+  cancel-in-progress: false
 
 jobs:
   purge-jsdelivr:
-    if: |
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success') ||
-      (
-        github.event_name != 'workflow_run' &&
-        github.actor != 'github-actions[bot]' &&
-        (github.event_name != 'push' || github.ref_name == ((vars.WORK_BRANCH != '' && vars.WORK_BRANCH) || 'main'))
-      )
+    # Only the owning repository operates this cache.
+    if: github.repository == 'Aethersailor/Custom_OpenClash_Rules'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    continue-on-error: true
+    timeout-minutes: 45
+    outputs:
+      before_sha: ${{ steps.range.outputs.before }}
+      after_sha: ${{ steps.range.outputs.after }}
+      worker_deployable: ${{ steps.worker-plan.outputs.worker_deployable }}
+      worker_plan_reason: ${{ steps.worker-plan.outputs.worker_plan_reason }}
     defaults:
       run:
         shell: bash
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v6
+      - name: Checkout publisher implementation
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          # Run the publisher implementation from the workflow's triggering
+          # revision. Manual repair ranges may intentionally end before this
+          # script and contract existed; their commits are read from Git data.
+          ref: ${{ github.sha }}
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Soft Debounce (Wait & Check)
-        id: debounce
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Resolve deterministic publication range
+        id: range
         env:
-          CURRENT_SHA: ${{ github.sha }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
           EVENT_NAME: ${{ github.event_name }}
-          TARGET_BRANCH: ${{ env.TARGET_BRANCH }}
+          EVENT_BEFORE: ${{ github.event.before }}
+          EVENT_SHA: ${{ github.sha }}
+          REQUEST_BEFORE: ${{ inputs.before_sha }}
+          REQUEST_AFTER: ${{ inputs.after_sha }}
         run: |
-          echo "Event: $EVENT_NAME"
-          echo "Target branch: $TARGET_BRANCH"
-
-          if ! git ls-remote --exit-code --heads origin "$TARGET_BRANCH" >/dev/null 2>&1; then
-            echo "Remote branch '$TARGET_BRANCH' not found. Skipping purge."
-            echo "should_purge=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          if [ "$EVENT_NAME" = "workflow_run" ]; then
-            echo "Workflow run head SHA: $HEAD_SHA"
-            echo "Fetching latest remote info..."
-            git fetch origin "$TARGET_BRANCH"
-            LATEST_SHA=$(git rev-parse "origin/$TARGET_BRANCH")
-
-            echo "Latest Remote SHA: $LATEST_SHA"
-
-            if [ "$LATEST_SHA" = "$HEAD_SHA" ]; then
-              echo "No new commit since workflow completed. Skipping purge."
-              echo "should_purge=false" >> "$GITHUB_OUTPUT"
-              exit 0
+          if [ -n "$REQUEST_AFTER" ]; then
+            # Explicit reusable/manual ranges must win over the caller's event context.
+            mode="complete"
+            before="$REQUEST_BEFORE"
+            after="$REQUEST_AFTER"
+            if [ -z "$before" ]; then
+              before="$(git rev-parse "${after}^{commit}^")"
             fi
-
-            echo "New commit detected after workflow run. Proceeding with purge."
-            echo "should_purge=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "Current Commit SHA: $CURRENT_SHA"
-          echo "Waiting for 60 seconds to batch multiple changes..."
-
-          # 倒计时
-          for i in {60..1}; do
-             # 仅每10秒打印一次日志防止刷屏
-             if (( i % 10 == 0 )); then
-               echo "$i seconds remaining..."
-             fi
-             sleep 1
-          done
-
-          echo "Fetching latest remote info..."
-          git fetch origin "$TARGET_BRANCH"
-          LATEST_SHA=$(git rev-parse "origin/$TARGET_BRANCH")
-
-          echo "Latest Remote SHA: $LATEST_SHA"
-
-          if [ "$CURRENT_SHA" != "$LATEST_SHA" ]; then
-            echo "A newer commit ($LATEST_SHA) has been detected."
-            echo "Skipping this run to avoid redundant purge."
-            echo "should_purge=false" >> "$GITHUB_OUTPUT"
-            exit 0
+          elif [ "$EVENT_NAME" = "push" ]; then
+            mode="direct"
+            before="$EVENT_BEFORE"
+            after="$EVENT_SHA"
           else
-            echo "This is still the latest commit. Proceeding with purge..."
-            echo "should_purge=true" >> "$GITHUB_OUTPUT"
+            # Manual runs are complete repair ranges and must not defer sources.
+            mode="complete"
+            after="$EVENT_SHA"
+            before="$REQUEST_BEFORE"
+            if [ -z "$before" ]; then
+              before="$(git rev-parse "${after}^{commit}^")"
+            fi
           fi
 
-      - name: Purge jsDelivr Cache
-        if: steps.debounce.outputs.should_purge == 'true'
+          git fetch --no-tags origin main
+          published="$(git rev-parse FETCH_HEAD)"
+
+          {
+            echo "mode=$mode"
+            echo "before=$before"
+            echo "after=$after"
+            echo "published=$published"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Purge every changed cache key
+        env:
+          REPOSITORY: ${{ github.repository }}
+          BEFORE_SHA: ${{ steps.range.outputs.before }}
+          AFTER_SHA: ${{ steps.range.outputs.after }}
+          PUBLISHED_SHA: ${{ steps.range.outputs.published }}
+          PUBLICATION_MODE: ${{ steps.range.outputs.mode }}
         run: |
-          REPO="${{ github.repository }}"
-          echo "Purging jsDelivr cache for $REPO"
+          python .github/scripts/jsdelivr_purge.py run \
+            --repository "$REPOSITORY" \
+            --before "$BEFORE_SHA" \
+            --after "$AFTER_SHA" \
+            --published "$PUBLISHED_SHA" \
+            --mode "$PUBLICATION_MODE"
 
-          for i in {1..3}; do
-            echo "Attempt $i: Purging..."
-            result=$(curl -s -X GET "https://purge.jsdelivr.net/gh/${REPO}")
-            echo "$result"
+      - name: Plan exact Cloudflare mirror snapshot
+        id: worker-plan
+        env:
+          BEFORE_SHA: ${{ steps.range.outputs.before }}
+          AFTER_SHA: ${{ steps.range.outputs.after }}
+          GENERATION_COMPLETE: ${{ inputs.generation_complete || false }}
+        run: |
+          generation_args=()
+          if [ "$GENERATION_COMPLETE" = "true" ]; then
+            generation_args+=(--generation-complete)
+          fi
+          python .github/scripts/jsdelivr_purge.py plan-worker-snapshot \
+            --before "$BEFORE_SHA" \
+            --after "$AFTER_SHA" \
+            --github-output "$GITHUB_OUTPUT" \
+            "${generation_args[@]}"
 
-            if echo "$result" | grep -q '"status": "finished"'; then
-              echo "Purge succeeded."
+  deploy-worker-snapshot:
+    needs: purge-jsdelivr
+    if: needs.purge-jsdelivr.outputs.worker_deployable == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: cloudflare-production
+    permissions:
+      contents: read
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout exact snapshot
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Confirm snapshot is still current main
+        id: current-main
+        env:
+          EXPECTED_SHA: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+        run: |
+          git fetch --no-tags origin main
+          current_sha="$(git rev-parse FETCH_HEAD)"
+          if [ "$current_sha" = "$EXPECTED_SHA" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+            echo "Deploying current main snapshot $EXPECTED_SHA"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skip stale snapshot $EXPECTED_SHA; current main is $current_sha"
+          fi
+
+      - name: Build exact Static Assets snapshot
+        if: steps.current-main.outputs.current == 'true'
+        env:
+          EXPECTED_SHA: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+        run: |
+          python .github/scripts/jsdelivr_purge.py build-worker-assets \
+            --revision "$EXPECTED_SHA" \
+            --output workers/repository-mirror/dist
+          npm ci --prefix workers/repository-mirror
+
+      - name: Reconfirm current main immediately before deploy
+        if: steps.current-main.outputs.current == 'true'
+        id: pre-deploy-main
+        env:
+          EXPECTED_SHA: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+        run: |
+          current_sha="$(
+            git ls-remote --exit-code origin refs/heads/main |
+              awk 'NR == 1 { print $1 }'
+          )"
+          if [ "$current_sha" = "$EXPECTED_SHA" ]; then
+            echo "current=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "current=false" >> "$GITHUB_OUTPUT"
+            echo "Skip stale snapshot $EXPECTED_SHA; current main is $current_sha"
+          fi
+
+      - name: Deploy Worker and Static Assets
+        if: >-
+          steps.current-main.outputs.current == 'true' &&
+          steps.pre-deploy-main.outputs.current == 'true'
+        working-directory: workers/repository-mirror
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CF_REDIRECT_API_TOKEN: ${{ secrets.CF_REDIRECT_API_TOKEN }}
+          EXPECTED_SHA: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+        run: |
+          : "${CLOUDFLARE_API_TOKEN:?missing CLOUDFLARE_API_TOKEN}"
+          : "${CLOUDFLARE_ACCOUNT_ID:?missing CLOUDFLARE_ACCOUNT_ID}"
+          : "${CLOUDFLARE_ZONE_ID:?missing CLOUDFLARE_ZONE_ID}"
+          : "${CF_REDIRECT_API_TOKEN:?missing CF_REDIRECT_API_TOKEN}"
+          secrets_file="$RUNNER_TEMP/cloudflare-mirror-secrets.env"
+          umask 077
+          {
+            printf 'CF_ZONE_ID=%s\n' "$CLOUDFLARE_ZONE_ID"
+            printf 'CF_REDIRECT_API_TOKEN=%s\n' "$CF_REDIRECT_API_TOKEN"
+          } > "$secrets_file"
+          npm exec -- wrangler deploy \
+            --secrets-file "$secrets_file" \
+            --var "SNAPSHOT_SHA:$EXPECTED_SHA" \
+            --strict
+
+      - name: Verify deployed snapshot identity
+        if: >-
+          steps.current-main.outputs.current == 'true' &&
+          steps.pre-deploy-main.outputs.current == 'true'
+        env:
+          EXPECTED_SHA: ${{ needs.purge-jsdelivr.outputs.after_sha }}
+        run: |
+          manifest="$RUNNER_TEMP/cloudflare-mirror-main.json"
+          verified=false
+          for attempt in 1 2 3 4 5 6 7 8 9 10; do
+            curl --fail --location --show-error \
+              --retry 3 --retry-delay 2 --retry-all-errors --retry-max-time 60 \
+              --connect-timeout 15 --max-time 60 \
+              --output "$manifest" \
+              "https://git.asailor.org/_mirror/Custom_OpenClash_Rules/main.json"
+            if python - "$manifest" "$EXPECTED_SHA" <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          payload = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          actual = payload.get("commit")
+          if actual != sys.argv[2]:
+              print(f"Cloudflare still serves {actual!r}; expected {sys.argv[2]}")
+              raise SystemExit(1)
+          print(
+              f"Verified Cloudflare snapshot {actual}: "
+              f"{payload['file_count']} files, {payload['total_bytes']} bytes"
+          )
+          PY
+            then
+              verified=true
               break
-            else
-              echo "Purge failed, retrying in 5s..."
-              sleep 5
             fi
-
-            if [ "$i" -eq 3 ]; then
-              echo "Purge failed after 3 attempts."
-              exit 1
+            if [ "$attempt" -lt 10 ]; then
+              sleep 3
             fi
           done
+          if [ "$verified" != "true" ]; then
+            echo "Cloudflare snapshot did not converge to $EXPECTED_SHA" >&2
+            exit 1
+          fi
+          current_sha="$(
+            git ls-remote --exit-code origin refs/heads/main |
+              awk 'NR == 1 { print $1 }'
+          )"
+          if [ "$current_sha" != "$EXPECTED_SHA" ]; then
+            echo "main advanced to $current_sha after deploying $EXPECTED_SHA" >&2
+            echo "The queued publisher for the newer revision must replace this snapshot." >&2
+            exit 1
+          fi
