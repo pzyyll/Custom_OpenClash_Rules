@@ -1,28 +1,33 @@
+# ABOUTME: Keep the Mainland compatibility template equal to the standard template.
+# ABOUTME: Serialize publication with other workflows that write to main.
 name: Update Custom_Clash_Mainland.ini
 
 on:
   push:
+    branches:
+      - main
     paths:
       - cfg/Custom_Clash.ini
   workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: main-writers
 
 jobs:
   update-mainland:
     runs-on: ubuntu-latest
     steps:
     - name: Check out the repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       with:
         ref: main
         fetch-depth: 0
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-
     - name: Generate Custom_Clash_Mainland.ini
-      run: python py/generate_mainland.py
+      run: cp cfg/Custom_Clash.ini cfg/Custom_Clash_Mainland.ini
 
     - name: Commit and push changes
       env:
