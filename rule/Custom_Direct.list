@@ -6,7 +6,7 @@
 
 
 # ImmortalWrt 相关
-DOMAIN-SUFFIX,immortalwrt.org
+#DOMAIN-SUFFIX,immortalwrt.org
 #DOMAIN-SUFFIX,kyarucloud.moe
 #DOMAIN-SUFFIX,r2s.site
 
@@ -38,8 +38,8 @@ DOMAIN-SUFFIX,github.moeyy.xyz
 DOMAIN-SUFFIX,github.site
 DOMAIN-SUFFIX,github.store
 DOMAIN-SUFFIX,hub.gitmirror.com
-DOMAIN-SUFFIX,jsdelivr.com
-DOMAIN-SUFFIX,jsdelivr.net
+#DOMAIN-SUFFIX,jsdelivr.com
+#DOMAIN-SUFFIX,jsdelivr.net
 DOMAIN-SUFFIX,kgithub.com
 
 # Docker 反代 CDN
@@ -347,6 +347,376 @@ DOMAIN-SUFFIX,ahlt10010.com
 # 以下是准备向 GeoSite 上游仓库提交 PR 的国内冷门域名，收录后会注释对应内容
 # ---------------------------------------
 # 以下域名待提交 PR
+# add by Rule-Bot Client / Date: 2026-11-09 04:21:39
+DOMAIN-SUFFIX,btgpy.com
+# add by Rule-Bot Client / Date: 2026-11-09 03:18:04
+DOMAIN-SUFFIX,ichongjiayuan.com
+# add by Rule-Bot Client / Date: 2026-11-09 03:18:01
+DOMAIN-SUFFIX,nanjyiyun.com
+# add by Rule-Bot Client / Date: 2026-11-09 02:24:40
+DOMAIN-SUFFIX,yikeapi.com
+# add by Rule-Bot Client / Date: 2026-11-09 02:24:29
+DOMAIN-SUFFIX,qswpt.com
+# add by Rule-Bot Client / Date: 2026-11-09 01:49:11
+DOMAIN-SUFFIX,jingxi-wl.com
+# add by Rule-Bot Client / Date: 2026-11-08 22:24:44
+DOMAIN-SUFFIX,uploadlog.com
+# add by Rule-Bot Client / Date: 2026-11-08 21:38:10
+DOMAIN-SUFFIX,huangyusz.space
+# add by Rule-Bot Client / Date: 2026-11-08 20:14:13
+DOMAIN-SUFFIX,superpande.com
+# add by Rule-Bot Client / Date: 2026-11-08 19:17:14
+DOMAIN-SUFFIX,libtv.com
+# add by Rule-Bot Client / Date: 2026-11-08 19:16:31
+DOMAIN-SUFFIX,dldcsj.com
+# add by Rule-Bot Client / Date: 2026-11-08 19:16:27
+DOMAIN-SUFFIX,373979.cc
+# add by Rule-Bot Client / Date: 2026-11-08 18:18:05
+DOMAIN-SUFFIX,mssdag.com
+# add by Rule-Bot Client / Date: 2026-11-08 18:16:26
+DOMAIN-SUFFIX,jztysg.com
+# add by Rule-Bot Client / Date: 2026-11-08 18:16:24
+DOMAIN-SUFFIX,ifawj9hvvl.com
+# add by Rule-Bot Client / Date: 2026-11-08 18:16:14
+DOMAIN-SUFFIX,edyr2ip7zg.com
+# add by Rule-Bot Client / Date: 2026-11-08 13:27:55
+DOMAIN-SUFFIX,37rk0rihje.com
+# add by Rule-Bot Client / Date: 2026-11-08 13:27:53
+DOMAIN-SUFFIX,1o057bolbb.com
+# add by Rule-Bot Client / Date: 2026-11-08 13:27:49
+DOMAIN-SUFFIX,f691ax6.cc
+# add by Rule-Bot Client / Date: 2026-11-08 13:27:38
+DOMAIN-SUFFIX,nq6jitu4y.com
+# add by Rule-Bot Client / Date: 2026-11-08 13:27:36
+DOMAIN-SUFFIX,08137tabw.com
+# add by Rule-Bot Client / Date: 2026-11-07 21:10:26
+DOMAIN-SUFFIX,theshikilab.com
+# add by Rule-Bot Client / Date: 2026-11-07 20:32:35
+DOMAIN-SUFFIX,mb518.com
+# add by Rule-Bot Client / Date: 2026-11-07 19:58:47
+DOMAIN-SUFFIX,zxstech.com
+# add by Rule-Bot Client / Date: 2026-11-07 19:52:38
+DOMAIN-SUFFIX,iya365.com
+# add by Rule-Bot Client / Date: 2026-11-07 18:14:53
+DOMAIN-SUFFIX,ctzpj.com
+# add by Rule-Bot Client / Date: 2026-11-07 16:34:00
+DOMAIN-SUFFIX,hanbodianzi.com
+# add by Rule-Bot Client / Date: 2026-11-07 16:12:12
+DOMAIN-SUFFIX,dggdjt.com
+# add by Rule-Bot Client / Date: 2026-11-07 04:38:30
+DOMAIN-SUFFIX,870833.com
+# add by Rule-Bot Client / Date: 2026-11-07 04:38:12
+DOMAIN-SUFFIX,bro.pw
+# add by Rule-Bot Client / Date: 2026-11-07 04:08:04
+DOMAIN-SUFFIX,rocrp.net
+# add by Rule-Bot Client / Date: 2026-11-07 02:37:26
+DOMAIN-SUFFIX,vryfh.top
+# add by Rule-Bot Client / Date: 2026-11-07 01:57:56
+DOMAIN-SUFFIX,gexuanyi.top
+# add by Rule-Bot Client / Date: 2026-11-06 20:21:31
+DOMAIN-SUFFIX,fullo.top
+# add by Rule-Bot Client / Date: 2026-11-06 18:41:49
+DOMAIN-SUFFIX,agi2rjr.cc
+# add by Rule-Bot Client / Date: 2026-11-06 09:16:23
+DOMAIN-SUFFIX,kuleu.com
+# add by Rule-Bot Client / Date: 2026-11-06 08:12:12
+DOMAIN-SUFFIX,ldd678.com
+# add by Rule-Bot Client / Date: 2026-11-06 08:12:09
+DOMAIN-SUFFIX,zudanje.com
+# add by Rule-Bot Client / Date: 2026-11-06 06:06:37
+DOMAIN-SUFFIX,htfzsdk.com
+# add by Rule-Bot Client / Date: 2026-11-06 06:06:26
+DOMAIN-SUFFIX,g7c3wqc.cc
+# add by Rule-Bot Client / Date: 2026-11-06 06:06:16
+DOMAIN-SUFFIX,a047.com
+# add by Rule-Bot Client / Date: 2026-11-06 06:06:01
+DOMAIN-SUFFIX,wshifen.com
+# add by Rule-Bot Client / Date: 2026-11-06 05:04:36
+DOMAIN-SUFFIX,miaona.app
+# add by Rule-Bot Client / Date: 2026-11-06 05:03:55
+DOMAIN-SUFFIX,mulingyuer.com
+# add by Rule-Bot Client / Date: 2026-11-06 05:03:41
+DOMAIN-SUFFIX,43645202.com
+# add by Rule-Bot Client / Date: 2026-11-06 04:52:29
+DOMAIN-SUFFIX,huya999.com
+# add by Rule-Bot Client / Date: 2026-11-06 04:00:46
+DOMAIN-SUFFIX,anwaben.com
+# add by Rule-Bot Client / Date: 2026-11-06 04:00:38
+DOMAIN-SUFFIX,lfdapengu.com
+# add by Rule-Bot Client / Date: 2026-11-06 04:00:33
+DOMAIN-SUFFIX,80168930.com
+# add by Rule-Bot Client / Date: 2026-11-06 04:00:02
+DOMAIN-SUFFIX,danji.xin
+# add by Rule-Bot Client / Date: 2026-11-06 03:59:57
+DOMAIN-SUFFIX,mbm06.com
+# add by Rule-Bot Client / Date: 2026-11-06 03:59:54
+DOMAIN-SUFFIX,bxjddjt.com
+# add by Rule-Bot Client / Date: 2026-11-06 02:51:25
+DOMAIN-SUFFIX,i6z7t5.com
+# add by Rule-Bot Client / Date: 2026-11-06 01:49:58
+DOMAIN-SUFFIX,yydsys.de
+# add by Rule-Bot Client / Date: 2026-11-06 01:49:03
+DOMAIN-SUFFIX,nxog.fun
+# add by Rule-Bot Client / Date: 2026-11-06 00:48:38
+DOMAIN-SUFFIX,jyg4352.cc
+# add by Rule-Bot Client / Date: 2026-11-06 00:00:43
+DOMAIN-SUFFIX,gjjwgp3n.com
+# add by Rule-Bot Client / Date: 2026-11-05 23:14:52
+DOMAIN-SUFFIX,montain.top
+# add by Rule-Bot Client / Date: 2026-11-05 23:12:52
+DOMAIN-SUFFIX,wmvbo.com
+# add by Rule-Bot Client / Date: 2026-11-05 22:44:53
+DOMAIN-SUFFIX,smw9t0a.cc
+# add by Rule-Bot Client / Date: 2026-11-05 21:40:30
+DOMAIN-SUFFIX,pupumall.cc
+# add by Rule-Bot Client / Date: 2026-11-05 21:40:23
+DOMAIN-SUFFIX,csrqoa.com
+# add by Rule-Bot Client / Date: 2026-11-05 21:39:50
+DOMAIN-SUFFIX,guiguiya.com
+# add by Rule-Bot Client / Date: 2026-11-05 21:15:11
+DOMAIN-SUFFIX,eezygoapi.com
+# add by Rule-Bot Client / Date: 2026-11-05 20:45:36
+DOMAIN-SUFFIX,sxdidc.com
+# add by Rule-Bot Client / Date: 2026-11-05 20:39:03
+DOMAIN-SUFFIX,lmm85.com
+# add by Rule-Bot Client / Date: 2026-11-05 19:38:59
+DOMAIN-SUFFIX,mochadj.com
+# add by Rule-Bot Client / Date: 2026-11-05 19:38:31
+DOMAIN-SUFFIX,cloudseekr.com
+# add by Rule-Bot Client / Date: 2026-11-05 18:44:46
+DOMAIN-SUFFIX,chengguodj.com
+# add by Rule-Bot Client / Date: 2026-11-05 17:37:17
+DOMAIN-SUFFIX,huangguoai.ai
+# add by Rule-Bot Client / Date: 2026-11-05 17:37:02
+DOMAIN-SUFFIX,sysbbs.com
+# add by Rule-Bot Client / Date: 2026-11-05 17:36:56
+DOMAIN-SUFFIX,ycoo.net
+# add by Rule-Bot Client / Date: 2026-11-05 16:12:43
+DOMAIN-SUFFIX,mzbcars.com
+# add by Rule-Bot Client / Date: 2026-11-05 15:28:38
+DOMAIN-SUFFIX,taosirenli.top
+# add by Rule-Bot Client / Date: 2026-11-05 11:47:27
+DOMAIN-SUFFIX,hoyoget.com
+# add by Rule-Bot Client / Date: 2026-11-05 11:45:11
+DOMAIN-SUFFIX,youkuimg.icu
+# add by Rule-Bot Client / Date: 2026-11-05 01:03:27
+DOMAIN-SUFFIX,ro1029mango.com
+# add by Rule-Bot Client / Date: 2026-11-05 01:02:35
+DOMAIN-SUFFIX,zi1029panda.top
+# add by Rule-Bot Client / Date: 2026-11-05 01:02:33
+DOMAIN-SUFFIX,xincili01ng.top
+# add by Rule-Bot Client / Date: 2026-11-05 01:00:02
+DOMAIN-SUFFIX,cilizhai.net
+# add by Rule-Bot Client / Date: 2026-11-04 19:52:12
+DOMAIN-SUFFIX,greennet-inc.com
+# add by Rule-Bot Client / Date: 2026-11-04 17:16:29
+DOMAIN-SUFFIX,wt2zxk.com
+# add by Rule-Bot Client / Date: 2026-11-04 16:43:28
+DOMAIN-SUFFIX,darwinchow.com
+# add by Rule-Bot Client / Date: 2026-11-04 16:43:22
+DOMAIN-SUFFIX,264788.xyz
+# add by Rule-Bot Client / Date: 2026-11-04 15:05:35
+DOMAIN-SUFFIX,cqhy.fun
+# add by Rule-Bot Client / Date: 2026-11-04 04:44:41
+DOMAIN-SUFFIX,stargame.group
+# add by Rule-Bot Client / Date: 2026-11-04 04:03:47
+DOMAIN-SUFFIX,chatlabs.net
+# add by Rule-Bot Client / Date: 2026-11-03 23:27:48
+DOMAIN-SUFFIX,ftsup.com
+# add by Rule-Bot Client / Date: 2026-11-03 20:17:39
+DOMAIN-SUFFIX,meimuyingxiao.com
+# add by Rule-Bot Client / Date: 2026-11-03 20:01:46
+DOMAIN-SUFFIX,qdgsny.com
+# add by Telegram user: zhangzz / Date: 2026-11-03 19:21:35
+DOMAIN-SUFFIX,arena-cn.com
+# add by Rule-Bot Client / Date: 2026-11-03 14:46:51
+DOMAIN-SUFFIX,zxp7.cc
+# add by Rule-Bot Client / Date: 2026-11-03 13:10:13
+DOMAIN-SUFFIX,lhndksn.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:10:09
+DOMAIN-SUFFIX,pdhnx.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:10:06
+DOMAIN-SUFFIX,ehdjskx.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:10:04
+DOMAIN-SUFFIX,nhjdixj.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:10:01
+DOMAIN-SUFFIX,fhendj.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:59
+DOMAIN-SUFFIX,bhduhs.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:56
+DOMAIN-SUFFIX,ghejdls.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:53
+DOMAIN-SUFFIX,dhjsnx.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:51
+DOMAIN-SUFFIX,adbnjg.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:48
+DOMAIN-SUFFIX,ijdhend.com
+# add by Rule-Bot Client / Date: 2026-11-03 13:09:45
+DOMAIN-SUFFIX,ohdnhxj.com
+# add by Rule-Bot Client / Date: 2026-11-03 12:50:23
+DOMAIN-SUFFIX,huabangshou.com
+# add by Rule-Bot Client / Date: 2026-11-03 12:00:56
+DOMAIN-SUFFIX,xiaodingfang.com
+# add by Rule-Bot Client / Date: 2026-11-03 01:01:52
+DOMAIN-SUFFIX,lianguo-tech.com
+# add by Rule-Bot Client / Date: 2026-11-03 00:59:33
+DOMAIN-SUFFIX,tracker.ink
+# add by Rule-Bot Client / Date: 2026-11-03 00:29:16
+DOMAIN-SUFFIX,linkease.net
+# add by Rule-Bot Client / Date: 2026-11-02 14:28:22
+DOMAIN-SUFFIX,cyberpig.tech
+# add by Rule-Bot Client / Date: 2026-11-02 13:05:55
+DOMAIN-SUFFIX,52ywp.com
+# add by Rule-Bot Client / Date: 2026-11-02 11:44:48
+DOMAIN-SUFFIX,skyts.net
+# add by Rule-Bot Client / Date: 2026-11-02 05:49:12
+DOMAIN-SUFFIX,dd3862.com
+# add by Rule-Bot Client / Date: 2026-11-02 01:21:59
+DOMAIN-SUFFIX,225284.xyz
+# add by Rule-Bot Client / Date: 2026-11-02 00:01:15
+DOMAIN-SUFFIX,kkmmy.com
+# add by Rule-Bot Client / Date: 2026-11-01 23:11:49
+DOMAIN-SUFFIX,hexieark.com
+# add by Rule-Bot Client / Date: 2026-11-01 19:24:03
+DOMAIN-SUFFIX,tylk.cc
+# add by Rule-Bot Client / Date: 2026-11-01 18:48:41
+DOMAIN-SUFFIX,leux.net
+# add by Rule-Bot Client / Date: 2026-11-01 14:48:08
+DOMAIN-SUFFIX,luxiangwu.com
+# add by Telegram user: mpbizn / Date: 2026-11-01 13:40:04
+DOMAIN-SUFFIX,hndk1.com
+# add by Rule-Bot Client / Date: 2026-11-01 07:16:37
+DOMAIN-SUFFIX,qpe27.top
+# add by Rule-Bot Client / Date: 2026-10-31 14:52:29
+DOMAIN-SUFFIX,allsaints.top
+# AITO汽车服务 / add by Telegram user: pangxiaopang666 / Date: 2026-10-31 13:52:12
+DOMAIN-SUFFIX,fgaiservice.com
+# add by Rule-Bot Client / Date: 2026-10-31 03:41:48
+DOMAIN-SUFFIX,yeguodj.com
+# add by Rule-Bot Client / Date: 2026-10-31 01:36:03
+DOMAIN-SUFFIX,fileh.xyz
+# add by Rule-Bot Client / Date: 2026-10-31 01:36:00
+DOMAIN-SUFFIX,filej.xyz
+# add by Rule-Bot Client / Date: 2026-10-30 20:26:55
+DOMAIN-SUFFIX,sxjiabeide.com
+# add by Rule-Bot Client / Date: 2026-10-30 20:26:51
+DOMAIN-SUFFIX,847ds.com
+# add by Rule-Bot Client / Date: 2026-10-30 17:03:53
+DOMAIN-SUFFIX,yixlab.com
+# add by Telegram user: nhlzh14138 / Date: 2026-10-30 16:09:24
+DOMAIN-SUFFIX,paojiaoyun.com
+# add by Rule-Bot Client / Date: 2026-10-30 15:21:03
+DOMAIN-SUFFIX,topkee.com
+# add by Rule-Bot Client / Date: 2026-10-30 15:21:01
+DOMAIN-SUFFIX,topkee.top
+# add by Rule-Bot Client / Date: 2026-10-30 15:20:59
+DOMAIN-SUFFIX,kke.com.hk
+# add by Rule-Bot Client / Date: 2026-10-30 12:41:18
+DOMAIN-SUFFIX,dg3yy.com
+# add by Rule-Bot Client / Date: 2026-10-30 11:51:57
+DOMAIN-SUFFIX,vip666ai.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:46:18
+DOMAIN-SUFFIX,njlisi.top
+# add by Rule-Bot Client / Date: 2026-10-30 04:44:41
+DOMAIN-SUFFIX,3688baihuo.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:44:18
+DOMAIN-SUFFIX,gxnnxsqy.top
+# add by Rule-Bot Client / Date: 2026-10-30 04:36:18
+DOMAIN-SUFFIX,paijitang.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:25:19
+DOMAIN-SUFFIX,u5nm5uvh1w.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:25:16
+DOMAIN-SUFFIX,8z8dlsjkn2.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:13:48
+DOMAIN-SUFFIX,shccywlkj.xyz
+# add by Rule-Bot Client / Date: 2026-10-30 04:06:46
+DOMAIN-SUFFIX,btsel5g.cc
+# add by Rule-Bot Client / Date: 2026-10-30 04:06:13
+DOMAIN-SUFFIX,yrqvlchq5.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:06:06
+DOMAIN-SUFFIX,i955jr0pk.com
+# add by Rule-Bot Client / Date: 2026-10-30 04:06:04
+DOMAIN-SUFFIX,ec766.com
+# add by Rule-Bot Client / Date: 2026-10-30 00:12:39
+DOMAIN-SUFFIX,xzjykj.com
+# add by Rule-Bot Client / Date: 2026-10-30 00:12:31
+DOMAIN-SUFFIX,sduc.cloud
+# add by Rule-Bot Client / Date: 2026-10-30 00:12:22
+DOMAIN-SUFFIX,weiguangshanyao.com
+# add by Rule-Bot Client / Date: 2026-10-30 00:12:04
+DOMAIN-SUFFIX,4kzn.cc
+# add by Rule-Bot Client / Date: 2026-10-30 00:11:54
+DOMAIN-SUFFIX,shrxnet.com
+# add by Rule-Bot Client / Date: 2026-10-29 23:12:13
+DOMAIN-SUFFIX,shandian.blog
+# add by Rule-Bot Client / Date: 2026-10-29 23:11:51
+DOMAIN-SUFFIX,yyxdmn.com
+# add by Rule-Bot Client / Date: 2026-10-29 23:11:27
+DOMAIN-SUFFIX,shytkjgs.com
+# add by Rule-Bot Client / Date: 2026-10-29 21:10:34
+DOMAIN-SUFFIX,myviewcloud.com
+# add by Rule-Bot Client / Date: 2026-10-29 18:57:44
+DOMAIN-SUFFIX,nuanxinhm.com
+# add by Rule-Bot Client / Date: 2026-10-29 18:42:57
+DOMAIN-SUFFIX,tlkg.com
+# add by Rule-Bot Client / Date: 2026-10-29 12:50:31
+DOMAIN-SUFFIX,gacicv.com
+# add by Rule-Bot Client / Date: 2026-10-29 09:49:12
+DOMAIN-SUFFIX,hanoking.com
+# add by Rule-Bot Client / Date: 2026-10-29 09:42:19
+DOMAIN-SUFFIX,153532.com
+# add by Rule-Bot Client / Date: 2026-10-29 08:58:14
+DOMAIN-SUFFIX,eyosc.com
+# add by Rule-Bot Client / Date: 2026-10-29 08:35:03
+DOMAIN-SUFFIX,lodop.net
+# add by Rule-Bot Client / Date: 2026-10-29 08:32:14
+DOMAIN-SUFFIX,kbser.com
+# add by Rule-Bot Client / Date: 2026-10-29 08:31:03
+DOMAIN-SUFFIX,757abc.com
+# add by Rule-Bot Client / Date: 2026-10-29 06:40:54
+DOMAIN-SUFFIX,sun-panel.top
+# add by Telegram user: JinjerTK / Date: 2026-10-28 19:20:46
+DOMAIN-SUFFIX,human-horizons.com
+# add by Telegram user: JinjerTK / Date: 2026-10-28 15:50:32
+DOMAIN-SUFFIX,changzhi.top
+# add by Telegram user: JinjerTK / Date: 2026-10-28 15:47:09
+DOMAIN-SUFFIX,xiaoyao.co
+# add by Telegram user: JinjerTK / Date: 2026-10-28 15:46:09
+DOMAIN-SUFFIX,ldboost.com
+# add by Telegram user: JinjerTK / Date: 2026-10-28 15:44:50
+DOMAIN-SUFFIX,qzy.xyz
+# add by Telegram user: donglailin / Date: 2026-10-28 08:04:32
+DOMAIN-SUFFIX,liyunol.com
+# add by Rule-Bot Client / Date: 2026-10-26 22:14:17
+DOMAIN-SUFFIX,cindy.app
+# add by Rule-Bot Client / Date: 2026-10-26 21:53:40
+DOMAIN-SUFFIX,wuhanjijin.com
+# add by Rule-Bot Client / Date: 2026-10-26 20:26:34
+DOMAIN-SUFFIX,xaippc.com
+# add by Rule-Bot Client / Date: 2026-10-25 23:08:51
+DOMAIN-SUFFIX,v-koolsh.com
+# add by Rule-Bot Client / Date: 2026-10-25 14:16:08
+DOMAIN-SUFFIX,aitongqian.com
+# add by Rule-Bot Client / Date: 2026-10-25 12:51:17
+DOMAIN-SUFFIX,wanzd.com
+# 小说网站 / add by Telegram user: cosalone / Date: 2026-10-24 17:34:10
+DOMAIN-SUFFIX,77shuku.info
+# add by Telegram user: mpbizn / Date: 2026-10-24 09:46:41
+DOMAIN-SUFFIX,xingpaste.com
+# add by Rule-Bot Client / Date: 2026-10-24 04:16:58
+DOMAIN-SUFFIX,szmtzd.com
+# add by Rule-Bot Client / Date: 2026-10-22 14:22:32
+DOMAIN-SUFFIX,constantinefun.com
+# add by Rule-Bot Client / Date: 2026-10-22 11:18:51
+DOMAIN-SUFFIX,infistar.cc
+# add by Rule-Bot Client / Date: 2026-10-21 13:17:49
+DOMAIN-SUFFIX,hanzhe.site
+# add by Rule-Bot Client / Date: 2026-10-20 22:46:40
+DOMAIN-SUFFIX,taotoken.net
+# 宝库一号游戏下载站 / add by Telegram user: mpbizn / Date: 2026-10-20 22:01:51
+DOMAIN-SUFFIX,baoku.one
+# add by Rule-Bot Client / Date: 2026-10-20 18:12:50
+DOMAIN-SUFFIX,browserscan.net
 # 瓦力UPS / add by Telegram user: hwzjcofo / Date: 2026-10-19 19:02:52
 DOMAIN-SUFFIX,wallecube.com
 # add by Rule-Bot Client / Date: 2026-10-19 17:07:52
