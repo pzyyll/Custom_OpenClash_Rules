@@ -10,9 +10,6 @@
 #DOMAIN-SUFFIX,kyarucloud.moe
 #DOMAIN-SUFFIX,r2s.site
 
-# Tailscale
-DOMAIN-SUFFIX,tailscale.com
-SRC-PORT,41641
 
 # Cloudflare Tunnel
 DOMAIN-SUFFIX,argotunnel.com
