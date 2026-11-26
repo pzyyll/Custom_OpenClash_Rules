@@ -1,7 +1,7 @@
 # Generated from rule/Custom_Direct.list
 # REPO: https://github.com/Aethersailor/Custom_OpenClash_Rules
 # SOURCE: https://github.com/Aethersailor/Custom_OpenClash_Rules/blob/main/rule/Custom_Direct.list
-# TOTAL: 1190
+# TOTAL: 1191
 
 payload:
   - '+.00333118.com'
@@ -940,6 +940,7 @@ payload:
   - '+.sztopten.com'
   - '+.taichuansmart.com'
   - '+.tailgdd.com'
+  - '+.tailscale.com'
   - '+.taiqp.com'
   - '+.tajiduo.com'
   - '+.talk-cloud.net'
