@@ -1,3 +1,5 @@
+# ABOUTME: Regenerates cfg/Custom_Clash_Full_Opt.ini from Custom_Clash_Full.ini plus the A1 ext configs.
+# ABOUTME: Serialize publication with other workflows that write to main.
 name: Update Custom_Clash_Full_Opt.ini
 
 on:
@@ -13,12 +15,21 @@ on:
     types:
       - completed
 
+permissions:
+  contents: write
+
+concurrency:
+  group: main-writers
+
 jobs:
   update-opt:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
 
       - name: Install uv
         uses: astral-sh/setup-uv@v5
@@ -26,20 +37,51 @@ jobs:
       - name: Install the project
         run: uv sync --locked --all-extras --dev
 
-      - name: Generate Custom_Clash_Full_Opt.ini
-        run: uv run generate
-
-      - name: Commit and push changes
+      # generate + publish 放在同一个重试循环里：只要 main 被别人推进，
+      # 就从最新 main 重新生成再推，避免 push 被 main-writers 之外的提交抢占。
+      - name: Generate, commit and push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "No changes to commit"
-          else
+
+          generated_pathspecs=('cfg/Custom_Clash_Full_Opt.ini')
+
+          remote_main_sha() {
+            git ls-remote --exit-code origin refs/heads/main |
+              awk 'NR == 1 { print $1 }'
+          }
+
+          for attempt in 1 2 3; do
+            echo "Generation and publication attempt ${attempt}/3"
+            git fetch --no-tags origin main
+            git reset --hard origin/main
+            uv run generate
+
+            if [ -z "$(git status --porcelain --untracked-files=all -- "${generated_pathspecs[@]}")" ]; then
+              echo "No generated Opt config changes, skip commit and push."
+              exit 0
+            fi
+
+            base_sha="$(git rev-parse HEAD)"
+            git add -A -- "${generated_pathspecs[@]}"
             git commit -m "Update Custom_Clash_Full_Opt.ini based on Custom_Clash_Full.ini and rules"
-            git pull --rebase origin main
-            git push origin HEAD
-          fi
+
+            if git push origin HEAD:main; then
+              echo "Published ${base_sha} -> $(git rev-parse HEAD)"
+              exit 0
+            fi
+
+            if [ "$(remote_main_sha)" = "$base_sha" ]; then
+              echo "Push failed without a competing main update; refusing to hide the error." >&2
+              exit 1
+            fi
+            echo "Push raced with a newer main revision; regenerating and retrying."
+          done
+
+          echo "Could not publish cfg/Custom_Clash_Full_Opt.ini after 3 attempts." >&2
+          exit 1
